@@ -4,7 +4,7 @@
 
 ## Step 1: Get R
 
-Install R 3.6.0 or later installed on your computer. 
+Install R 3.6.0 or later on your computer. 
 
 ### To install R, you can do so [here](https://cran.rstudio.com/).
 
