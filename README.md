@@ -11,7 +11,9 @@ Install R 3.6.0 or later installed on your computer.
 For help installing R, check out one of the following videos (courtesy of Roger Peng at Johns Hopkins Biostatistics):
 
 [Installing R on Windows](http://youtu.be/mfGFv-iB724)
+
 [Installing R on Mac](http://youtu.be/Icawuhf0Yqo)
+
 [Installing R on Linux](https://github.com/swirldev/swirl/wiki/Installing-swirl-on-Linux)
 
 ## Step 2: Get RStudio
