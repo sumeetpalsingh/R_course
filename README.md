@@ -25,7 +25,7 @@ If you need to install RStudio, you can do so [here](http://www.rstudio.com/prod
 ## Step 3: Start RStudio and test your installation
 
 Start RStudio on your computer. You should see a screen like the one below:
-[]
+[https://github.com/sumeetpalsingh/R_course/blob/master/images/RStudio%20Start.png]
 
 You will see the version of R that is installed in the lower left block. 
 In the image above, it says: R version 3.6.1 (2019-07-05) -- "Action of the Toes"
