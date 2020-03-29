@@ -1,4 +1,4 @@
-R practice with Swirl
+Homework, Session 1: R practice with Swirl
 ================
 
 Swirl
