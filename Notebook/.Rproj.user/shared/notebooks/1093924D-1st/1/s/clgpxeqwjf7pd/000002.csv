@@ -1,0 +1,13 @@
+"0","library(swirl) # Attach to the environment
+"
+"2","
+| Hi! I see that you have some variables saved in your workspace. To
+| keep things running smoothly, I recommend you clean up before
+| starting swirl.
+
+| Type ls() to see a list of the variables in your workspace. Then,
+| type rm(list=ls()) to clear your workspace.
+
+| Type swirl() when you are ready to begin.
+
+"

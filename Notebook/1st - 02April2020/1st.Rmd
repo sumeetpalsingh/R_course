@@ -1,0 +1,272 @@
+---
+title: "R coursework with Sumeet"
+subtitle: "1st : Introduction"
+author: "Yura Song"
+date: '`r format(Sys.Date(), "%B %d, %Y")`'
+output:
+  html_notebook:
+    toc: yes
+---
+
+```{r setup, include=FALSE, cache=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = ".")
+```
+
+```{r libraries, message=FALSE}
+library(tidyverse)
+```
+
+# Aim of the course
+ - Mostly foundation course
+ - Independent in data analysis and plotting
+ 
+# Storing Values on R
+
+## Variables
+
+```{r giving variable}
+a = 2+2 # Result will be stored on variable a
+```
+
+```{r}
+mySum = 2+2 # recommend to give the name including information
+```
+
+It is recommended to use **assignment operator** on R. The assignment operator works on both direction, both <- and ->.
+```{r assignment operator}
+mySum <- 2+2 # Could put the operator with shortcut of alt + -
+mySum # Give back the stored value
+```
+
+```{r inductive}
+mySum1 <- mySum2 <- 6+4 # This also works!
+mySum1 <- 7+8 -> mySum2 # This format is not recommended
+```
+
+## Vector
+
+Vector is a collection of scalars. It is one dimentional.
+
+### Numeric vectors
+
+```{r}
+myNumbers <- c(2, 4, 6, 8, 10, 12, 15, 57, 98)
+myNumbers
+```
+ 
+```{r}
+myNumbers + 1 
+```
+
+```{r}
+myNumbers / 2
+```
+ 
+**Calculation is done on all the elements in the vector.**
+
+### Character vectors
+
+Character should be enclosed by quatation mark. If not, R would consider it as a variable.
+```{r}
+myChars <- c("F", "M", "F", "M", "F", "F") 
+myChars
+```
+
+If you try to do some calculation on character vector, it will return the error message.
+```{r}
+myChars + 1
+```
+
+### Logical vectors
+
+Logical vector is very simple, cpmposed of either **TRUE** or **FALSE**.
+
+For example, we will see which element is less than 20 in myNumber.
+```{r}
+myLogical <- myNumbers < 20
+myLogical
+```
+
+Interesting thing of logical vector is that the value of two elements, **true wcorresponds to 1 and false corresponds to 0**. If you sum the values of logical vector, it will return the number of TRUE elements.
+
+To get the sum of certain value, you could use the function *sum()*. This function could be used for the **numeric vectors**.
+```{r}
+sum(myLogical)
+```
+
+## Factor
+
+Factors are collected as a part of **groups**. For example, the character vector is composed of several characters, each element is considered as individual. However, with the **factor**, it returns the group information in the set of factors.
+
+If you would like to make a **factor** from **character vectors**, you could use *factor()*.
+```{r}
+myFactor <- factor(myChars)
+myFactor
+```
+
+# Function
+
+**Function** gives you the property or operation. In other words, t is used to perform a specific operation. By giving the inputs to the function, it will return the output.
+
+If you would like to get some information about function, you could use question mark as below. It will give detailed explanation and some examples regarding usage of function. 
+```{r}
+?sum
+```
+
+or you could input *function()* and press tab key. It will show you the what kind of input should be given.
+
+## Summation
+
+*sum* calculates the summation of the given input. You also could store the result of *sum* into the new variable.
+```{r}
+mySum <- sum(myNumbers)
+mySum
+```
+
+## Logarithm
+
+If you would like to apply log, you could use *log function*. There will be a lot of log-related functions. It depends on the which base you would like to use. You could check the details via *?log*.
+
+Here, we will use the base of 10 on **myNumbers**.
+```{r}
+log10(myNumbers)
+```
+
+Giving the data variable as x gives the same result. In other words, you do not have to assign the input by giving as the format of *x=*.
+```{r}
+log10(x = myNumbers)
+```
+
+With *logb()* function, you could give the base which you want.
+```{r}
+logb(x = myNumbers, base = 3) 
+```
+
+If you clarify the input in the function, you do not have to take care of the order of inputs. If not, it will give totally different result.
+```{r}
+logb(3, myNumbers)
+```
+This returns the result of log values of 3 applied with different bases in the **myNumbers**.
+
+## Average
+
+To find the average values of several numbers, you could use *mean()* function. 
+```{r}
+mean(myNumbers)
+```
+
+## Another useful function
+
+*length()* prints out the number of elements in certain vector.
+```{r}
+length(myNumbers)
+```
+
+*mode()* gives back the type of vectors. It is useful to track the variables we have.
+```{r}
+mode(myNumbers)
+```
+
+**TIP** : if you do not know the name of function, you could input the **two question marks and function.** However, it depends on the function and some functions does not have further explanation.
+
+# Subsetting
+
+**Subsetting** is the very efficient manner, it makes you available to select or extract the values in the vector. Also this could be done by position of element or condition. It could be done with **square brackets**, [].
+
+## Based on the position of element
+
+```{r}
+myNumbers[1]
+```
+
+You also could extract the several values.
+```{r}
+myNumbers[c(1, 3, 5)] 
+```
+
+If you would like to give a range of position for subsetting, you could use **:**. 
+```{r}
+myNumbers[1:3]
+```
+
+For this, it works with opposite direction.
+```{r}
+myNumbers[3:1]
+```
+
+Let's use some trick. If you would like to get the very last element in the vector, you could use *length()* function. Because *length()* will return the number of elements, corresponding to the index of the very last element.
+```{r}
+myNumbers[length(myNumbers)]
+```
+
+```{r}
+myNumbers[length(myNumbers):1]
+```
+
+## Logical subsetting
+
+If you give the true and false, it will return the values of trues in the vector.
+```{r}
+myNumbers[c(T, T, T, T, T, F, F, F, F)]
+```
+
+Here, we could bind the logical and numerical calculation. Here is the example.
+```{r}
+myComparison <- myNumbers < 20
+myComparison
+```
+
+```{r}
+myNumbers[myComparison]
+```
+
+Here, we could give the several different conditions. Here, **|**, it is considered as **or**. 
+```{r}
+myComparison2 <- (myNumbers < 10) | (myNumbers > 20) 
+```
+
+```{r}
+myNumbers[myComparison2]
+```
+
+**TIP** : If you would like give **equal** on the calculation in R, you should give two equal signs, **==**.
+```{r}
+myNumbers[myNumbers == 10]
+```
+
+```{r}
+myChars == "F" # Tell me which is F or not.
+```
+
+## Invert logical vectors
+
+If you would like to invert the logical vector, you could use *!*. For example,
+```{r}
+!TRUE
+```
+
+```{r}
+!myComparison2
+```
+
+Here, we also could use the values into the numeric vectors to print out the values corresponding to the positon of TRUE.
+```{r}
+myNumbers[!myComparison2]
+```
+
+# Summary 
+ - Vectors are a collection of scalars
+ 
+# Package
+
+For the assingment, you should install the package called **swirl**. It is the package for learning R, as a interactive way.
+```{r}
+install.package("swirl") # Installation : on the first time once!!
+library(swirl) # Attach to the environment
+```
+
+With this command, you could start **swirl**. Enjoy!
+```{r}
+swirl()
+```
