@@ -2,7 +2,7 @@
 
 We will learn how to subset and manipulate them. 
 
-#### For manipulating data.frames, we will use [Tidyverse](https://www.tidyverse.org/)
+#### For manipulating data.frames, we will use [Tidyverse](https://www.tidyverse.org/){:target="_blank"}
 
 ### Install tidyverse using the following command:
 
