@@ -14,7 +14,7 @@ swirl()
 ```
 
 ##### Exercise 1 - 3 cover topic 3 - 8 from 'R programming course'
-
+![alt text](https://github.com/sumeetpalsingh/R_course/blob/master/images/R_exercise_session2.png "R Basics Exercise")
 
 
 ### Exercise 1: Refresh vectors and subsetting
