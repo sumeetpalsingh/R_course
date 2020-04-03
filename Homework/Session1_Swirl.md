@@ -19,7 +19,7 @@ library("swirl")
 swirl()
 ```
 
-### Step 2: Start basic exercise
+### Step 3: Start basic exercise
 
 #### Choose 1. R programming
 
