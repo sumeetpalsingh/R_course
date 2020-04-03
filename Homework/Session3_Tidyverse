@@ -1,7 +1,36 @@
-### Exercise 4: Introduction to tidyverse
+Homework, Session 2: Data manipulation using Tidyverse (dplyr)
+================
+
+We will be using Swirl for learning dplyr verbs, which provide a grammer for manipulating data in R
+-----
+
+### Start Swirl
+
+``` r
+library("swirl")
+swirl()
+```
+
+### Preparation: Install Swirl Tidyverse exercise
 
 [Swirl has additional exercises dedicated to specific topics.](http://swirlstats.com/scn/title.html)
 
-We will be 
+We will be use 'Getting and Cleaning Data' course. To install, use the following command:
 
-#### Choose 7: Matrices and Data Frames 
+``` r
+install_course("Getting and Cleaning Data")
+```
+
+##### Current exercise cover topic 1 - 2 from 'Getting and Cleaning Data'
+![alt text](https://github.com/sumeetpalsingh/R_course/blob/master/images/R_exercise_session3.png "dplyr exercises")
+
+
+### Exercise: dplyr
+
+#### Choose 1: Manipulating Data with dplyr
+This exercise teaches for verbs of dplyr: select(), filter(), arrange(), mutate() and summarize().
+
+#### Choose 2: Grouping and Chaining with dplyr
+This exercise takes an in-depth look at summarize(). A powerful verb allows split-apply-combine strategy of data analysis.
+
+Good luck!
