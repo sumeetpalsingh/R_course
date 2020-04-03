@@ -24,3 +24,4 @@ tidyverse_packages()
 
 You should see the following image on your R console. Check that **dplyr** package is included in the installation. 
 
+![alt text](https://github.com/sumeetpalsingh/R_course/blob/master/images/Tidyverse_load.png "Tidyverse Load")
