@@ -1,10 +1,10 @@
-Homework, Session 2: Dataframe
+Homework, Session 2: Data structures
 ================
 
-We will again be using Swirl for practicing subsetting of data and tidyverse
+We will be using Swirl for learning about and manipulating basic data structures in R
 -----
 
-There are in total four exercises. Try to have patience and finish them slowly. They will be well worth the effort! 
+There are in total three exercises. Try to have patience and finish them slowly. They will be well worth the effort! 
 
 ### Start Swirl
 
@@ -23,7 +23,7 @@ swirl()
 
 Part of R programming course
 
-### Exercise 2: Refresh Logicical operations
+### Exercise 2: Refresh Logical operations
 
 #### Choose 8: Logic 
 
@@ -38,4 +38,3 @@ Part of R programming course. The exercise introduces matrices, which we didn't 
 Matrices can hold only one data type (eg. only numerical, or only character).
 Data frame can hold multiple data types, and are more useful to data analysis.
 In R, you will mostly be working with data frames.
-
