@@ -1,17 +1,17 @@
 ### For the third session, we will learn how to manipulate data.frames using dplyr
 
-#### There is no *additional* preparation for Session 3. If you followed the preparation for Session 2, you are all set :)
+#### There is no *additional* preparation for Session 3. If you followed the preparation for Session 2, skip to Step 2.
 
 
-#### For manipulating data.frames, we will use [Tidyverse](https://www.tidyverse.org/)
+##### For manipulating data.frames, we will use [Tidyverse](https://www.tidyverse.org/)
 
-### Install tidyverse using the following command:
+#### Step 1: Install tidyverse using the following command:
 
 ```r
 install.packages("tidyverse")
 ```
 
-Once installed, load tidyverse packages into the R session using the command:
+#### Step 2: Load tidyverse packages into the R session using the command:
 
 ```r
 library(tidyverse)
