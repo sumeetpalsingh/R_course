@@ -3,7 +3,7 @@
 #### There is no *additional* preparation for Session 3. If you followed the preparation for Session 2, skip to Step 2.
 
 
-##### For manipulating data.frames, we will use [Tidyverse](https://www.tidyverse.org/)
+For manipulating data.frames, we will use [Tidyverse](https://www.tidyverse.org/)
 
 #### Step 1: Install tidyverse using the following command:
 
