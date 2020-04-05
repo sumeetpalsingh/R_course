@@ -18,6 +18,7 @@
 YouTube link (can access from the playlist link mentioned above, or): https://www.youtube.com/watch?v=wn6Pe4dTcGI
 
 Country | Time
+--------|------
 Belgium / Germany | 5 PM
 Mumbai | 8:30 PM
 EDT (New York) | 11 AM
