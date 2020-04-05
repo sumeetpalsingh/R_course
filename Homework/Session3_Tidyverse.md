@@ -1,4 +1,4 @@
-Homework, Session 2: Data manipulation using dplyr
+Homework, Session 3: Data manipulation using dplyr
 ================
 
 We will be using Swirl for learning dplyr verbs, which provide a grammer for manipulating data in R
