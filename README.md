@@ -12,10 +12,15 @@
 
 - ***Homework*** contains **practice expercises** for each session.
 
-### Upcoming session
+### Upcoming sessions
 
-#### Session 2: Monday, 06 April, 2020. 3 PM GMT. 
+#### Session 2: Introduction to data.frames
+#### Monday, 06 April, 2020. 3 PM GMT. 
 YouTube link (can access from the playlist link mentioned above, or): https://www.youtube.com/watch?v=wn6Pe4dTcGI
+
+#### Session 3: Introduction to dplyr
+#### Thursday, 09 April, 2020. 3 PM GMT.
+YouTube link (can access from the playlist link mentioned above, or): https://www.youtube.com/watch?v=-Z0oqOGVte8
 
 Country | Time
 --------|------
