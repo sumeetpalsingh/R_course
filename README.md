@@ -12,6 +12,8 @@
 
 - ***Homework*** contains **practice expercises** for each session.
 
+- ***Presentations*** contains **slides** for each session. Click on link provided to view the html file (Github does not directly render html)
+
 ### Upcoming sessions
 
 #### Session 2: Introduction to data.frames
