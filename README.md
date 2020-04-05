@@ -8,6 +8,6 @@
 
 - ***R_files*** contains **the file generated during the session**.
 
-- ***Notebook*** contains **notes made by Yura Song**.
+- ***Notebook*** contains **notes made by [Yura Song](https://github.com/yurasong)**.
 
 - ***Homework*** contains **practice expercises** for each session.
