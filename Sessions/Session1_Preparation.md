@@ -1,6 +1,6 @@
 # R_course
 
-## Introductory R course conducted at IRIBHM, April 2020
+## Introductory R course, April 2020
 
 ## Step 1: Get R
 
