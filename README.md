@@ -24,7 +24,7 @@ YouTube link (can access from the playlist link mentioned above, or): https://ww
 #### Thursday, 09 April, 2020. 5 PM Brussels Time (GMT +2) (**See time for your zone below**).
 YouTube link (can access from the playlist link mentioned above, or): https://www.youtube.com/watch?v=-Z0oqOGVte8
 
-Country | Time
+Country/Zone | Time
 --------|------
 Germany | 5 PM
 GMT (London) | 3 PM
