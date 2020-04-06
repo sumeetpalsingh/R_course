@@ -17,15 +17,16 @@
 ### Upcoming sessions
 
 #### Session 2: Introduction to data.frames
-#### Monday, 06 April, 2020. 3 PM GMT (**See time for your zone below**). 
+#### Monday, 06 April, 2020. 5 PM Brussels Time (GMT +2) (**See time for your zone below**). 
 YouTube link (can access from the playlist link mentioned above, or): https://www.youtube.com/watch?v=wn6Pe4dTcGI
 
 #### Session 3: Introduction to dplyr
-#### Thursday, 09 April, 2020. 3 PM GMT (**See time for your zone below**).
+#### Thursday, 09 April, 2020. 5 PM Brussels Time (GMT +2) (**See time for your zone below**).
 YouTube link (can access from the playlist link mentioned above, or): https://www.youtube.com/watch?v=-Z0oqOGVte8
 
 Country | Time
 --------|------
-Belgium / Germany | 5 PM
+Germany | 5 PM
+GMT (London) | 3 PM
 Mumbai | 8:30 PM
 EDT (New York) | 11 AM
