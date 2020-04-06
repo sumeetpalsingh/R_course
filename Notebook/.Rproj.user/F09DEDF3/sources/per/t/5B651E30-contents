@@ -1,0 +1,26 @@
+---
+title: "R coursework with Sumeet"
+subtitle: "2nd : "
+author: "Yura SONG"
+date: '`r format(Sys.Date(), "%B %d, %Y")`'
+output:
+  html_notebook:
+    toc: yes
+---
+
+```{r setup, include=FALSE, cache=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = ".")
+```
+
+```{r libraries, message=FALSE}
+library(tidyverse)
+```
+
+
+# SessionInfo
+
+```{r}
+sessionInfo()
+```
+

@@ -1,0 +1,440 @@
+---
+title: "R coursework with Sumeet"
+subtitle: "2nd : Subsetting and Introduction to Data Frames"
+author: "Yura SONG (yura.song@ulb.ac.be)"
+date: '`r format(Sys.Date(), "%B %d, %Y")`'
+output:
+  html_notebook:
+    toc: yes
+---
+
+```{r setup, include=FALSE, cache=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = ".")
+```
+
+# Subseting the dataset
+
+## Random subset
+
+We could use *sample.int* function for selecting some random set of numbers. You need to clarify the range, size of subset. If you give TRUE for replace option, it will return the unique values only.
+```{r}
+RndNumber <- sample.int(n = 100, size = 10, replace = TRUE)
+RndNumber
+```
+
+### Normal distribution
+
+We could get the **normal distribution** from *Normal* function of **stats** package.
+```{r}
+library(stats)
+```
+
+Here, we need to clarify the number of observations, mean and standard distribution. If we would like to get the random sets, we could use *rnorm* function. If you do not clarify the mean and standard deviation, the values will be default, mean = 0 and sd = 1.
+```{r}
+NormRanNumbers <- rnorm(n = 10)
+NormRanNumbers
+```
+
+### Seeding
+
+What if you would like to get the same set of random numbers? You could set a **seed**, it will run exactly same pseudo-random algorithm.
+```{r}
+set.seed(123) 
+```
+
+```{r}
+NormRanNumbers <- rnorm(n = 10)
+NormRanNumbers
+```
+
+```{r}
+NormRanNumbers
+```
+
+The results are exactly same although we call values from *rnorm*. If you would like to make the values initialized, you could give the another number on the **seed**.
+
+## Addition on Character vector
+
+```{r}
+myChars <- c("Hello", "Hi", "Bonjour", "Hallo") 
+myChars
+```
+
+We could do the calculation on the strings, by using *paste* function. Here, we will add **World** to each element separately.
+```{r}
+paste(myChars, "World")
+```
+
+If you do not want to add any space between the words, you could use *paste0* function.
+```{r}
+paste0(myChars, "World")
+```
+
+Or you could clarify the separators between the original string and added element by giving the specific separator.
+```{r}
+paste(myChars, "World", sep="_")
+```
+
+The other example is giving the number as a index on each element. Here, we will give the range of number.
+```{r}
+paste(myChars, 1:4, sep=".")
+```
+
+What if we give the range smaller than the number of elements in the original set? The input will be recycled as needed.
+```{r}
+paste(myChars, 1:2, sep=".")
+```
+
+## Keeping the values of elements for new vectors
+
+We would like to define the new vector composed of several greetings here. However, we would like to use the elements from the defined vector to make a new collection. Then we could give the name of a character vector into the new vector.
+```{r}
+myChars1 <- c(myChars, 
+              "Namaste", "Konnichiwa", "Mochi Mochi")
+myChars1
+```
+
+## Logical vector
+
+Let's create a set of logical vector by using the set of vectors already defined previously.
+```{r}
+myLogical <- NormRanNumbers > 0
+myLogical
+```
+
+What if we would like to know the number of **TRUE** values? We could use *sum* function since true corresponds to 1 and false corresponds to 0.
+```{r}
+sum(myLogical)
+```
+
+What if we would like to calculate the ratio or percentage of TRUE values among the dataset? We could use *sum* and *length* function.
+```{r}
+sum(myLogical) / length(myLogical)
+```
+
+## Factor vectors
+
+It would be the one we will keep using it. It is helpful when the definition of groups are required.
+
+Here, we will define a bag of red, green and blue balls. We will remove the 10 balls and the first three are red, next three are blue, the other two will be green and one red and another green as a set.
+
+Since we need to input several same values same time, we could use *rep* function. Also, to define the groups (called as Levels), we should give the *factor()* before giving the group definition.
+```{r}
+myFactor <- factor(c(rep("Red", 3), rep("Blue", 3), 
+                     rep("Blue", 3), rep("Green", 2),
+                     "Red", "Green"))
+myFactor
+```
+
+*table* function will help you to count the number of each level in the certain vector.
+```{r}
+table(myFactor)
+```
+
+Here, we could calculate the proportion of element in each group by using *table* and *length* function.
+```{r}
+table(myFactor) / length(myFactor)
+```
+
+**TIP**: Pie Chart
+
+Here, we could use the proportion for making pie chart. *pie* is the function we could use for drawing pie chart. It will give the random colors for each level.
+```{r}
+pie(table(myFactor))
+```
+
+# 2D data structure : Tidyverse
+
+## Preparation
+
+For manipulating data.frames, we will use [Tidyverse](https://www.tidyverse.org/)
+
+Install tidyverse using the following command:
+```{r install tidyverse package}
+install.packages("tidyverse")
+```
+
+Once installed, load tidyverse packages into the R session using the command:
+```{r libraries}
+library(tidyverse)
+```
+
+**Tidyverse** is a collection of packages that help with data manipulation. To see, which packages come with the installtion, use the following command
+```{r}
+tidyverse_packages()
+```
+
+You should see the following image on your R console. Check that **dplyr** package is included in the installation. 
+
+## Iris Dataframe
+
+The dataset called **Iris** is in-built dataset of R and it includes the informations of different species iris flowers, length and width of petal and sepal in centimetres. It has total 50 samples from each of three species.
+
+Here, we will load the **Iris** dataset.
+```{r}
+library(datasets)
+```
+
+If you would like to see the full list including the dataset library,
+```{r}
+library(help="datasets")
+```
+
+Here is the full set of iris dataset. This is also called as **Tidy data** because each column corresponds to the calculation of each criteria. Also each row corresponds to the one observation.
+```{r}
+iris
+```
+
+Here, each column has unique name. Species is qualitative value, and others are quantitative values. 
+
+### Explore the dataset 
+
+#### Summarization
+
+Actually when you call the name of dataset, it will just print full values included in the dataset. Here, by using *summary()* function, you could get the insight of the data.
+```{r}
+summary(iris)
+```
+
+Next thing we could do is plot the dataframe. R will make you the plots automatically.
+```{r}
+plot(iris)
+```
+
+In the plot grade, it takes each column and plot it with every other column one by one. It is particularly useful when you would like to see the correlations between two different elements. However, here, we could not know which point comes which observation.
+
+Here, it also plotted species, quantitative values, the level was turned to the numbers, 1 to 3. That was why it does not look like correlated.
+
+#### Print a part of the data
+
+What if we would like to see a part of the datasets? 
+
+Function called *head()* will return first six observations of the dataset.
+```{r}
+head(iris)
+```
+
+What if we would like to see the first 10 observations from the dataset? We could still use *head()* but we should clarify the number of observations.
+```{r}
+head(iris, n=10)
+```
+
+What if we could like to see the very end? *tail()* function will print out the last observations of the dataset.
+```{r}
+tail(iris)
+```
+
+### Obtaining attributes of a dataframe
+
+#### Dimension of data
+
+If you would like to know how many elements are included, we could use *length()* function.
+```{r}
+length(iris)
+```
+
+However, what if we would like to know how many columns and rows? We could take *dim* function. It will return the number of observations and the number of features.
+```{r}
+dim(iris)
+```
+
+**TIP**: making a boxplot
+
+Here, we will try to plot the distribution of sepal length versus species. The function is called *boxplot()*. 
+
+For drawing boxplot, we should clarify **formula**, the relationship which we would like to plot. Also, we should give the data information. For formula, the auto-completion is not woring since R does not know which one  will be given as input.
+
+Before plotting, if you would like to get the column name, we could use *colnames()* function.
+```{r}
+colnames(iris)
+```
+
+In addition, we could get the names of rows by using *rownames()*.
+
+```{r}
+boxplot(formula = Sepal.Length ~ Species, data = iris)
+```
+
+```{r}
+boxplot(formula = Petal.Length ~ Species, data = iris)
+```
+
+### Ratio of Sepal length to Petal length, plotted vs Species.
+
+How we could add the information and how to plot the added one? 
+
+#### Subsetting 2D dataset
+
+Here, we should do the **sub-setting** first of all. Since iris dataset is 2D dataset, we should subset both row and column. In the bracket, the row always should come first and those two are separated by comma.
+
+We need to subset sepal length and petal length, correspond to first and third column. If we put nothing on the position, it means that we will take **everything**. 
+```{r}
+getSepalLength <- iris[ , 1]
+getPetalLength <- iris[ , 3]
+```
+
+Here, we will get the one-dimentional dataset as a result of subsetting. If we try to use *dim()*, you will get **NULL** values since it is not 2D dataset anymore.
+```{r}
+dim(getSepalLength)
+```
+
+Actually the subset by using square bracket would not be that much intuitive. To giving the information, we could use the shortcut for subsetting a column. For this, you could work with dollar sign ($). 
+
+Here, we do not have to take care of the index of column. Also reading-wise, it is much easier to get the information.
+```{r}
+iris$Sepal.Length
+```
+
+The giving the column name by using dollar sign is exactly same as the result using square bracket. Also, you do not have to clarify the row range since it will take all the rows including that column.
+
+#### Defining the ratio
+
+```{r}
+ratioSepal_Peta_Length <- getSepalLength / getPetalLength
+```
+
+Here, we will make a new values by using the column name, to make it clear which column we have used. 
+```{r}
+ratio_Sepal_Peta_Length_2 <- iris$Sepal.Length / iris$Petal.Length
+```
+
+#### Expanding the dataset
+
+Here, we could giving the values as a new column. Here, the name of new column should be unique. If the name is same as the presented data, the data will be overwritten.
+```{r}
+iris$RatioS_P_Len <- ratio_Sepal_Peta_Length_2
+```
+
+You could see that the new column has been added as a last column.
+```{r}
+head(iris)
+```
+
+#### Boxplot
+
+```{r}
+boxplot(RatioS_P_Len ~ Species, data=iris)
+```
+
+This was the advantage of using column name. This is more powerful and faster compared to using column index.
+
+### Statistical analysis
+
+What if we would like to know the significancy based on statistical test? We will keep working on the dataset iris.
+
+#### ANOVA
+
+Here, since we have three different group, we will use **ANOVA**. For ANOVA, the function *aov()* is used. As we did for the boxplot, we should clarify formula and data.
+
+Here, we will perform statistical test the differences of sepal length and three different species. You could check the result by using *summary()* 
+```{r}
+anova.model <- aov(Sepal.Length ~ Species, data=iris)
+summary(anova.model)
+```
+
+#### Pair-wise analysis
+
+We could compute **Tukey** to see the significancy between two different groups, the groups tested on ANOVA. Regardless of the number of groups tested, *TukeyHSD* always returns the pair-wise statistical test results.
+```{r}
+TukeyHSD(anova.model)
+```
+
+### Subsetting the dataset - return to the fundamental``
+
+#### Subsetting based on columns and rows
+
+Here, we will try some examples for subsetting on iris dataset.
+
+What if we would like to take first three rows and first two columns? 
+```{r}
+iris[1:3, 1:2]
+```
+
+The result is still 2D, a format of dataframe.
+
+This will print out first three rows, with all columns.
+```{r}
+iris[1:3, ]
+```
+
+Similarly, we could print first two columns with all the rows.
+```{r}
+iris[, 1:2]
+```
+
+Could we put the names of column into the bracket? The answer is yes! This is useful when we would like to get the several columns, since dollar sign does not work for subsetting several columns. 
+```{r}
+iris[, c("Sepal.Length", "Sepal.Width")]
+```
+
+It will return the error as you could see.
+```{r}
+iris$c("Sepal.Length", "Sepal.Width")
+```
+
+Also, we could play with using *rownames()* or *colnames()* to assign the names.
+```{r}
+rownames(iris) <- paste0("Row", 1:150)
+head(iris)
+```
+
+For giving the values for *paste*, we should give the exact number of row. If not, it will return error since the dimension is not correct.f
+
+We could use the *nrow()*, to identify that we would like to use all the rows. With this, we do not have to identify the total number of rows and less possibility of error. This function will let R calculate by itself.
+```{r}
+rownames(iris) <- paste0("Row", 1:nrow(iris))
+head(iris)
+```
+
+Now rows have their own name, so we could subset based on the names of rows.
+```{r}
+iris[c("Row1", "Row9", "Row128"), ]
+```
+
+#### Subsetting by using logical vectors - conditional subsetting
+
+What if we are only interested in only species or sepal length? I mean, what if we are interested in certain information only.
+
+For example, we are interested in the species **setosa**. In other words, we would like to get all the information for setosa species. Then we need to subset the roxws for which the species equates to setosa.
+
+The first step is finding the rows whose species value is setosa. If the value matches, it will be returned as **TRUE**.
+```{r}
+is.setosa <- (iris$Species == "setosa")
+mode(is.setosa)
+```
+
+Okay, the value is logical. The next step is making all the rows including setosa based on the logical vector. This will return just 50 rows whose observation is **setosa**.
+```{r}
+iris[is.setosa, ]
+```
+
+#### Evaluate the characteristic
+
+What if we would like to obtain all the plants with Sepal length larger than 3 and get the distribution of species? We will do step by step.
+
+We will start with making logical vector whether the length of sepal is larger than 5 or not.
+```{r}
+is.SepalLengthgr5 <- (iris$Sepal.Length > 5)
+
+iris.select <- iris[is.SepalLengthgr5, ]
+```
+
+```{r}
+dim(iris.select)
+```
+
+Okay, we selected the observation whose sepal length is larger than 5. Then we need to extraction the information of species, which corresponds to the condition which we have given..
+```{r}
+table(iris.select$Species)
+```
+
+Also we could plot the distribution of species as a pie chart.
+```{r}
+pie(table(iris.select$Species))
+```
+
+This will give you the exactly same result as we did step by step. However, this is not that intuitive and easy to understand. Therefore, this form of command is not recommended at all.
+```{r}
+pie(table(iris[iris$Sepal.Length > 5,]$Species))
+```
