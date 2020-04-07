@@ -11,7 +11,7 @@ For manipulating data.frames, we will use [Tidyverse](https://www.tidyverse.org/
 install.packages("tidyverse")
 ```
 
-#### If you encounter issues during the installation of Tidyverse on Mac (Suggestions by Yura Song)
+#### If you encounter issues during the installation of Tidyverse on Mac (Suggestions by Yura Song and Benoît Haerlingen)
 
 One of the major errors occurring while starting tidyverse package is **"xcrun: error: invalid active developer path, missing xcrun”**.
 
@@ -39,6 +39,8 @@ If Rstudio return the error message: "there is no package called ‘fs’ “, i
 ```r
 install.packages(“fs”)
 ```
+
+[The issue is also addressed on Stack Overflow.](https://stackoverflow.com/questions/52522565/git-is-not-working-after-macos-update-xcrun-error-invalid-active-developer-pa)
 
 Additionally, it is highly recommended to check R community since lots of people have discussed about several topics regarding R packages and errors. 
 
