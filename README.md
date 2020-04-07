@@ -8,21 +8,21 @@
 
 - ***R_files*** contains **the file generated during the session**.
 
-- ***Notebook*** contains **notes made by [Yura Song](https://github.com/yurasong)**.
+- ***Notebook*** contains **notes made by [Yura Song](https://github.com/yurasong)**. Click on link provided to view the html files.
 
 - ***Homework*** contains **practice expercises** for each session.
 
-- ***Presentations*** contains **slides** for each session. Click on link provided to view the html file (Github does not directly render .html files)
+- ***Presentations*** contains **slides** for each session. Click on link provided to view the html files (Github does not directly render .html files)
 
 ### Upcoming sessions
-
-#### Session 2: Introduction to data.frames
-#### Monday, 06 April, 2020. 5 PM Brussels Time (GMT +2) (**See time for your zone below**). 
-YouTube link (can access from the playlist link mentioned above, or): https://www.youtube.com/watch?v=wn6Pe4dTcGI
 
 #### Session 3: Introduction to dplyr
 #### Thursday, 09 April, 2020. 5 PM Brussels Time (GMT +2) (**See time for your zone below**).
 YouTube link (can access from the playlist link mentioned above, or): https://www.youtube.com/watch?v=-Z0oqOGVte8
+
+#### Session 4: Reading and Writing Files with transformation to tidy format
+#### Monday, 13 April, 2020. 5 PM Brussels Time (GMT +2) (**See time for your zone below**). 
+YouTube link (can access from the playlist link mentioned above, or): https://youtu.be/jv4mnD5lhms
 
 Country/Zone | Time
 --------|------
