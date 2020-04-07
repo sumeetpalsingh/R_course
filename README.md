@@ -13,7 +13,8 @@
 - ***Homework*** contains **practice expercises** for each session.
 
 - ***Presentations*** contains **slides** for each session. Click on link provided to view the html files (Github does not directly render .html files)
-
+***
+***
 ### Upcoming sessions
 
 #### Session 3: Introduction to dplyr
