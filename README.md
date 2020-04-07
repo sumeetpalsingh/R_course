@@ -17,11 +17,11 @@
 ### Upcoming sessions
 
 #### Session 3: Introduction to dplyr
-#### Thursday, 09 April, 2020. 5 PM Brussels Time (GMT +2) (**See time for your zone below**).
+##### Thursday, 09 April, 2020. 5 PM Brussels Time (GMT +2) (**See time for your zone below**).
 YouTube link (can access from the playlist link mentioned above, or): https://www.youtube.com/watch?v=-Z0oqOGVte8
 
 #### Session 4: Reading and Writing Files with transformation to tidy format
-#### Monday, 13 April, 2020. 5 PM Brussels Time (GMT +2) (**See time for your zone below**). 
+##### Monday, 13 April, 2020. 5 PM Brussels Time (GMT +2) (**See time for your zone below**). 
 YouTube link (can access from the playlist link mentioned above, or): https://youtu.be/jv4mnD5lhms
 
 Country/Zone | Time
