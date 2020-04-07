@@ -11,14 +11,25 @@ For manipulating data.frames, we will use [Tidyverse](https://www.tidyverse.org/
 install.packages("tidyverse")
 ```
 
-#### If you encounter issues during the installation of Tidyverse (Suggestions by Yura Song)
+#### If you encounter issues during the installation of Tidyverse on Mac (Suggestions by Yura Song)
 
 One of the major errors occurring while starting tidyverse package is **"xcrun: error: invalid active developer path, missing xcrun”**.
 
-1. Open the terminal and run the command:  xcode-select --install
-2. Re-install the tidyverse on R (Step 1 Above)
-3. If the same error occurs although running 1, return to the terminal and run: sudo xcode-select --reset
-4. If 3 fails again, go to the [Apple developer download section](https://developer.apple.com/download/more/) and download Xcode manually.
+1. Open the Terminal (Go > Utilities > Terminal)
+
+2. In Terminal, run the command:  
+```bash
+xcode-select --install
+```
+
+3. Re-install the tidyverse on R (Step 1 Above)
+
+4. If the same error occurs although running 1, return to the Terminal and run: 
+```bash
+sudo xcode-select --reset
+```
+
+5. If 4 fails again, go to the [Apple developer download section](https://developer.apple.com/download/more/) and download Xcode manually. After manual installation try tidyverse installation (Step 1 Above)
 
 Once tidyverse is installed, load the library (Step 2 Below) using:
 ```r
