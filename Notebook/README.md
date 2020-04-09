@@ -8,4 +8,4 @@ Click on the link below to view the html files
 
 [**Session 2**](https://htmlpreview.github.io/?https://github.com/sumeetpalsingh/R_course/blob/master/Notebook/2nd%20-%2006April2020/2nd.nb.html)
 
-[**Session 3**](https://htmlpreview.github.io/?https://github.com/sumeetpalsingh/R_course/blob/master/Notebook/3rd%20-%2009April2020/3rd.nb.html
+[**Session 3**](https://htmlpreview.github.io/?https://github.com/sumeetpalsingh/R_course/blob/master/Notebook/3rd%20-%2009April2020/3rd.nb.html)
