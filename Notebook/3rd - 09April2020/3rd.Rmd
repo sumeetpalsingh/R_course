@@ -1,0 +1,439 @@
+---
+title: "R coursework with Sumeet"
+subtitle: "3rd : Introduction to dplyr"
+author: "Yura Song"
+date: '`r format(Sys.Date(), "%B %d, %Y")`'
+output:
+  html_notebook:
+    toc: yes
+---
+
+```{r setup, include=FALSE, cache=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = ".")
+```
+
+# Preparation
+
+```{r libraries}
+library(tidyverse)
+```
+
+We will keep working on **Tidy datasets**, composed of variables, observations and values.
+
+# Dataset - mtcars
+
+The dataset we will use today is called **mtcars**. This data was extracted from US motors magazine, composed of 32 observations on 11 numeric variables.
+```{r}
+data(mtcars)
+```
+
+## Getting glimpse of the data
+
+```{r}
+summary(mtcars)
+```
+
+Or we could use *View()* to see the dataframe as a format of table. Compared to *summary()*, it is much easier to go through the dataset and sorting the values are available. Also, you could filter the datasets as a part of datasets.
+```{r}
+View(mtcars)
+```
+
+Also, we could see the structure of each column with *str()*. This also provides a glimpse for the dataset.
+```{r}
+str(mtcars)
+```
+
+If we would like to know the size of dataset, we could use *dim()* function.
+```{r}
+dim(mtcars)
+```
+
+For the number of rows or columns, the function *nrow()* or *ncol()* will work!
+```{r}
+nrow(mtcars)
+```
+
+For getting the names of column or row, we could take them by using *colnames()* or *rownames()*.
+```{r}
+colnames(mtcars)
+```
+
+```{r}
+rownames(mtcars)
+```
+
+Subsetting based on the rows is possible by giving the name of rows.
+```{r}
+mtcars[c("Mazda RX4", "Mazda RX4 Wag"), ]
+```
+
+## Correlation
+
+To see the correlation between each elements, we could use *plot()*.
+```{r}
+plot(mtcars)
+```
+
+Also, if we would like to get the **correlation coefficient** between two different element in the dataset, we could use *cor()* function. Here, we should declare which element we would like to see. The default method is Pearson.
+```{r}
+cor(x=mtcars$mpg, y=mtcars$hp)
+```
+
+If we would like to use different method to calculate correlation coefficient, we could specify method.
+```{r}
+cor(x=mtcars$mpg, y=mtcars$hp, method="spearman")
+```
+
+If we give a subset of columns, it will return the correlation as a format of table.
+```{r}
+cor(mtcars[, c(1, 4)])
+```
+
+Also, correlation between all columns could be calculated too!
+```{r}
+cor(mtcars)
+```
+
+## Statistical test
+
+### T-test
+
+Does mpg differ based on Engine? We will see one by one. First, we will visualize data with **boxplot**.
+```{r}
+boxplot(formula = mpg ~ vs, data = mtcars)
+```
+
+Well, it looks quite different between each other. Here, to see their difference is significant or not, we will do *t.test()*.
+```{r}
+t.test(formula = mpg ~ vs, data = mtcars)
+```
+
+### ANOVA
+
+Before starting analysis, we could make the element as a table. With function called *table()*, we could check the levels and number of observations.
+```{r}
+table(mtcars$gear)
+```
+
+Here, we would like to see whether the differences between gear is significant or not.
+
+```{r}
+boxplot(mpg~gear, data=mtcars)
+```
+
+Here, we will perform ANOVA. The function for ANOVA is *aov()*.
+```{r}
+mpg.model <- aov(formula = mpg ~ gear, data = mtcars)
+summary(mpg.model)
+```
+
+It seems that we made mistake, the **Df** is a lot different.
+
+```{r}
+str(mtcars)
+```
+
+Well, gear is still as numeric value, not factor. Since the values on gear indicate the group, so we should give it as a **factor** in the model, not numeric values. If not, it will be considered as continuous values.
+```{r}
+mpg.model <- aov(formula = mpg ~ factor(gear), data = mtcars)
+summary(mpg.model)
+```
+
+Here, also, we could see the pair-wise comparison. The model which we have used for ANOVA is given as input in *TukeyHSD()*.
+```{r}
+TukeyHSD(mpg.model)
+```
+
+## Exercise
+
+Let's try to analyse **hp vs engine**.
+```{r}
+boxplot(hp ~ vs, data=mtcars)
+```
+
+```{r}
+t.test(hp ~ vs, data=mtcars)
+```
+
+Then Let's try to analyse **hp vs carb**.
+```{r}
+table(mtcars$carb)
+```
+
+```{r}
+hp.model <- aov(hp ~ factor(carb), data=mtcars)
+summary(hp.model)
+```
+
+## Simple plotting
+
+If we would like to see the relations between mpg and hp, we could visualise it by *plot()*. This function will decide which plot will be good for the inputs by itself.
+```{r}
+plot(x=mtcars$hp, y=mtcars$mpg)
+```
+
+However, we could change the parameter **pch** to change the dot. To give the filled dots, pch = 19 will work.
+```{r}
+plot(x=mtcars$hp, y=mtcars$mpg,
+     pch=19)
+```
+
+For plotting, using formula also works. 
+```{r}
+plot(hp ~ mpg, data = mtcars,
+     pch=19)
+```
+
+The advantage of using the formula is that we do not have to specify the name of axis because the function will take the name from the formula.
+
+What if we would like to change the color? We could give the **col** parametre. It will give the color based on the gear information then!
+```{r}
+plot(hp ~ mpg, data = mtcars,
+     pch=19, col = gear)
+```
+
+## Summarization of dataset
+
+### Average
+
+What if we would like to get the average hp for cars with different gears? *mean()* function will be helpful.
+```{r}
+mean(mtcars$hp)
+```
+
+With this command, it will calculate the average value of hp for whole dataset. However, to get what we want, we should subset the dataset.
+```{r}
+# Creating logical vectors
+is.gearEq3 <- mtcars$gear == 3
+length(is.gearEq3)
+```
+
+```{r}
+mtcars.gear3 <- mtcars[is.gearEq3, ]``
+dim(mtcars.gear3)
+```
+
+Now we have the dataset much smaller than original one, and easy to be used for what we want to get.
+
+Now we will make an average.
+```{r}
+mean(mtcars.gear3$hp)
+```
+
+## Split-apply-combine
+
+Most of analysis will work under the groups. Let's think about the boxplot.
+```{r}
+boxplot(mpg ~ gear, data=mtcars)
+```
+
+It will split the gear information, apply plotting method and combind the informations on the plot! 
+
+One of the most important function is *aggregate()*,  it splits the data into subsets, compute summary statistics for each, and returns the result in a convenient format, in other words, performing combination.
+
+Here, the data will be splitted based on the gear information and apply *mean()* function on it. It will return the average value of hp for each gear information.
+```{r}
+aggregate(formula = hp ~ gear, data = mtcars, FUN = mean)
+```
+
+Well, what if we would like to get standard deviation, not mean?
+```{r}
+aggregate(formula = hp ~ gear, data = mtcars, FUN = sd)
+```
+
+## Sorting
+
+Also we could **sort** dataset and keep the sorted data into environment. This could be worked with *dplyr* but it is also available with basic commands.
+
+*order* will take a position of vectors into ascending order.
+```{r}
+order(mtcars$hp)
+```
+
+So we could use this result to re-structure the dataset and re-arrange the dataset.
+```{r}
+mtcars[order(mtcars$hp), ]
+```
+
+What if we would like to sort the gear information in a manner of ascending of carb?
+```{r}
+mtcars[order(mtcars$gear, mtcars$carb), ]
+```
+
+For descending, you could add minus sign (-) to the values.
+```{r}
+mtcars[order(mtcars$gear, -mtcars$carb), ]
+```
+
+# Tidyverse
+
+Why should we take care of **Tidyverse**? It is already highly structured and usability is better. Not only the code, but **grammer** for coding matters a lot! Also the readability of codes are obviously clear.
+
+For tidyverse, regardless of the function, the first input should be dataset which we would like to put into the function.
+
+## Verbs
+
+Main five verbs provided by dplyr would be *arrange()*, *select()*, *filter()*, *summarise()* and *mutate()*. Also, sometimes *glimpse()* is also nice.
+
+### arrange()
+
+For *arrange()*, you should clarify the dataset, what to be arranged, the order for arrangement in the same group.
+```{r}
+arrange(mtcars, gear, desc(carb)) # As a descending manner
+```
+
+### select()
+
+This verb will be used to select some dataset. In other words, it is useful for subsetting of columns.
+```{r}
+select(mtcars, hp, mpg)
+```
+
+Also the **negative seletion** is possible.
+```{r}
+select(mtcars, -hp)
+```
+
+### filter()
+
+```{r}
+filter(mtcars, gear == 3)
+```
+
+```{r}
+filter(mtcars, gear == 3, hp > 200)
+```
+
+### mutate()
+
+When we want to make any change on the column, especially adding new columns, we could use *mutate()* function.
+
+Here as a example, we will put the ratio of mpg to hp as a new column. The new column wîll be added on the very end of the data.
+```{r}
+mutate(mtcars, mpg_hp_dplyr = mpg/hp)
+```
+
+Also the *mutate()* works for several addition.
+```{r}
+mutate(mtcars, 
+       mpg_hp_dplyr = mpg/hp,
+       mpg_wt = mpg/wt)
+```
+
+### summarise()
+
+It is similar to split-apply-combination concept, especially when working with *group_by()* manner. The name of output and operation should be specified
+
+```{r}
+mtcars %>% 
+  group_by(gear) %>% 
+  summarise(meanHP = mean(hp))
+```
+
+Not like *aggregate()*, we do not call the *summarise()* several times.
+```{r}
+mtcars %>% 
+  group_by(gear) %>% 
+  summarise(meanHP = mean(hp),
+            sdHP = sd(hp))
+```
+
+The another version is available, called *summarise_all()*. What if we would like to get all the average, but still consider the group? Just specify which function you would like to run as a input of *summarise_all()*.
+```{r}
+mtcars %>% 
+  group_by(gear) %>% 
+  summarise_all(mean)
+```
+
+
+### glimpse()
+
+*glimpse()* is more or less similar to *str()*, it shows all the information about the dataset.
+```{r}
+glimpse(mtcars)
+```
+
+## Pipe operator
+
+Pipe operator could connect the two different commands. It could be typed by shift + command + m and the format is %>% .
+
+When the function is given with pipe operator, the rond bracket () is not required anymore.
+```{r}
+mtcars$hp %>% log10
+```
+
+```{r}
+mtcars$hp %>% log10 %>% sin
+```
+
+### Example
+
+#### Step by step
+```{r}
+mtcars.new <- mtcars
+mtcars.new$carname <- rownames(mtcars)
+head(mtcars.new)
+```
+
+```{r}
+mazda.cars <- filter(mtcars.new, carname == "Mazda RX4" )
+```
+
+```{r}
+mazda.cars <- select(mazda.cars, hp, mpg)
+mazda.cars
+```
+
+#### using pipe operator
+
+```{r}
+mtcars.new %>% 
+  filter(carname == "Mazda RX4") %>% 
+  select(hp, mpg)
+```
+
+Q. hp and mpg, but for cars with gear 3 and wt > 2 and sort it as a descending manner of mpg?
+```{r}
+mtcars %>% 
+  filter(gear == 3) %>% 
+  filter(wt > 2) %>% 
+  select(hp, mpg) %>%
+  arrange(hp, desc(mpg))
+```
+
+Q. Cars with hp/mpg greater than 9 + what are the gears + make a table and pie chart
+```{r}
+mtcars %>% 
+  mutate(hp_mpg = hp / mpg) %>% 
+  filter(hp_mpg > 9) %>% 
+  select(gear) %>% 
+  table
+```
+
+```{r}
+mtcars %>% 
+  mutate(hp_mpg = hp / mpg) %>% 
+  filter(hp_mpg > 9) %>% 
+  select(gear) %>% 
+  table %>% 
+  pie
+```
+
+For the dataset generated by using several pipes, it is also available to save it as a new variable. There are two ways of saving.
+```{r}
+mtcars %>% 
+  filter(gear == 3) %>% 
+  filter(wt > 2) %>% 
+  select(hp, mpg) %>%
+  arrange(hp, desc(mpg)) -> data.final
+```
+
+```{r}
+data.final <- mtcars %>% 
+  filter(gear == 3) %>% 
+  filter(wt > 2) %>% 
+  select(hp, mpg) %>%
+  arrange(hp, desc(mpg))
+```
+
