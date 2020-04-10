@@ -13,7 +13,7 @@ install.packages("ggplot2")
 We will be plotting the trend of coronavirus cases in different countries around the world.
 For this, we will download [a daily updated dataset of coronavirus cases](https://github.com/RamiKrispin/coronavirus), courtsey of [Rami Krispin](https://github.com/RamiKrispin) and [Johns Hopkins](https://github.com/CSSEGISandData/COVID-19).
 
-#### Note: If devtools installation (Step 2) does not work, skip to Step 2b
+#### Note: If devtools installation (Step 2) does not work, skip to Step 3b
 
 ### Step 2: Install devtools 
 
@@ -29,7 +29,7 @@ devtools::install_github("covid19r/coronavirus")
 
 #### In case Step 2 (installation of devtools) does not work, install the CRAN version of coronavirus package. It is not updated daily, but has sufficient data for plotting
 
-### Step 2b: Install CRAN coronavirus R package (Only if Step 2 failed)
+### Step 3b: Install CRAN coronavirus R package (Only if Step 2 failed)
 
 ```r
 install.packages("coronavirus")
