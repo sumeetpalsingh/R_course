@@ -6,7 +6,7 @@ We will be using Swirl for learning how to tidy data using tidyr package
 
 #### Note: The exercise uses gather() for converting data to Tidy format. In the session, we used pivot_longer(), which is a more powerful and newer version of gather().   
 
-#### Thus the current exercise not only allows you to learn a new way of generating Tidy data, but will teach you to learn and experiment with new functions, a necessary skill in data analysis!
+#### Thus the current exercise not only allows you to learn a new way of generating Tidy data, but will teach you to experiment with new functions, a necessary skill in data analysis!
 ***
 
 #### Step 1: Start Swirl
