@@ -4,14 +4,13 @@ Homework, Session 3: Data manipulation using dplyr
 We will be using Swirl for learning dplyr verbs, which provide a grammer for manipulating data in R
 -----
 
-### Start Swirl
+### Step 1: Load Swirl
 
 ``` r
 library("swirl")
-swirl()
 ```
 
-### Preparation: Install Swirl Tidyverse exercise
+### Step2: Preparation: Install Swirl Tidyverse exercise
 
 [Swirl has additional exercises dedicated to specific topics.](http://swirlstats.com/scn/title.html)
 
@@ -21,11 +20,17 @@ We will be use 'Getting and Cleaning Data' course. To install, use the following
 install_course("Getting and Cleaning Data")
 ```
 
+#### Step 3: Start Swirl
+
+``` r
+swirl()
+```
+
 ##### Current exercise cover topic 1 - 2 from 'Getting and Cleaning Data'
 ![alt text](https://github.com/sumeetpalsingh/R_course/blob/master/images/R_exercise_session3.png "dplyr exercises")
 
 
-### Exercise: dplyr
+### Step 4: Exercise: dplyr
 
 #### Choose 1: Manipulating Data with dplyr
 This exercise teaches for verbs of dplyr: select(), filter(), arrange(), mutate() and summarize().
