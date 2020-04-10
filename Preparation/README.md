@@ -9,3 +9,5 @@ Prepartion guide for each session
 [**Session 3**](https://github.com/sumeetpalsingh/R_course/blob/master/Preparation/Session3_Preparation.md)
 
 [**Session 4**](https://github.com/sumeetpalsingh/R_course/blob/master/Preparation/Session4_Preparation.md)
+
+[**Session 5**](https://github.com/sumeetpalsingh/R_course/blob/master/Preparation/Session5_Preparation.md)
