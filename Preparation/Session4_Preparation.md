@@ -1,8 +1,8 @@
 ### For the forth session, we will learn how to import and export data files and convert wide data to long for analysis
 
-#### Step 1: Download data file folder that will be used for the session.
+#### Step 1: Download data file folder that will be used for the session (Click on link below).
 
-[Download Data File Folder](https://github.com/sumeetpalsingh/R_course/raw/master/Preparation/Session4%20Files.zip)
+[Download Data File Folder Link](https://github.com/sumeetpalsingh/R_course/raw/master/Preparation/Session4%20Files.zip)
 
 The folder is zipped. Unzip the folder. It will contain three files. 
 
