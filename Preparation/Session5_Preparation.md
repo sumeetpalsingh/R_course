@@ -35,9 +35,22 @@ devtools::install_github("covid19r/coronavirus")
 install.packages("coronavirus")
 ```
 
-### Step 4: Test all the installations
+### Bonus Step 4: Install [gganimate](https://github.com/thomasp85/gganimate) to make dynamic plots!
+If Step 2 (installation of devtools was successful)
+```r
+devtools::install_github('thomasp85/gganimate')
+```
+or
+
+```r
+install.packages("gganimate")
+```
+
+### Step 5: Test all the installations
 ```r
 library(ggplot2)
 library(coronavirus)
+## If gganimate (Step 4) was installed 
+library(gganimate)
 ```
 If everything loads without issues, you are ready for fifth session!
