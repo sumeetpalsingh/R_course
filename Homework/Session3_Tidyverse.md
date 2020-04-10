@@ -20,7 +20,7 @@ We will be use 'Getting and Cleaning Data' course. To install, use the following
 install_course("Getting and Cleaning Data")
 ```
 
-#### Step 3: Start Swirl
+### Step 3: Start Swirl
 
 ``` r
 swirl()
