@@ -17,13 +17,22 @@
 ***
 ### Upcoming sessions
 
-#### Session 3: Introduction to dplyr
-#### Thursday, 09 April, 2020. 5 PM Brussels Time (GMT +2) (**See time for your zone below**).
-YouTube link (can access from the playlist link mentioned above, or): https://www.youtube.com/watch?v=-Z0oqOGVte8
-***
 #### Session 4: Reading and Writing Files with transformation to tidy format
 #### Monday, 13 April, 2020. 5 PM Brussels Time (GMT +2) (**See time for your zone below**). 
 YouTube link (can access from the playlist link mentioned above, or): https://youtu.be/jv4mnD5lhms
+***
+#### Session 5: Introduction to ggplot
+#### Thursday, 15 April, 2020. 5 PM Brussels Time (GMT +2) (**See time for your zone below**).
+YouTube link (can access from the playlist link mentioned above, or): https://www.youtube.com/watch?v=21MXKios8uw
+***
+#### Session 6: Introduction to R Markdown
+#### Thursday, 20 April, 2020. 5 PM Brussels Time (GMT +2) (**See time for your zone below**).
+YouTube link (can access from the playlist link mentioned above, or): https://www.youtube.com/watch?v=zRH0fILJ-k0
+***
+#### Session 7: Interactive Websites using Shiny Apps
+#### Thursday, 23 April, 2020. 5 PM Brussels Time (GMT +2) (**See time for your zone below**).
+YouTube link (can access from the playlist link mentioned above, or): https://www.youtube.com/watch?v=vlgOoW9_jeQ
+***
 ***
 Country/Zone | Time
 --------|------
