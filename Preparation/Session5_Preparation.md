@@ -7,7 +7,7 @@ In the fifth session, we will learn how to use [ggplot](https://ggplot2.tidyvers
 ### Step 1: Install ggplot2 package using the following command: 
 
 ```r
-install.packages(""ggplot2"")
+install.packages("ggplot2")
 ```
 
 ### Step 2: Test if ggplot is properly installed 
