@@ -10,38 +10,32 @@ In the fifth session, we will learn how to use [ggplot](https://ggplot2.tidyvers
 install.packages("ggplot2")
 ```
 
-### Step 2: Test if ggplot is properly installed 
-
-```r
-library(ggplot2)
-```
-
 We will be plotting the trend of coronavirus cases in different countries around the world.
 For this, we will download [a daily updated dataset of coronavirus cases](https://github.com/RamiKrispin/coronavirus), courtsey of [Rami Krispin](https://github.com/RamiKrispin) and [Johns Hopkins](https://github.com/CSSEGISandData/COVID-19).
 
-#### Note: If devtools installation (Step 3) does not work, skip to Step 3b
+#### Note: If devtools installation (Step 2) does not work, skip to Step 2b
 
-### Step 3: Install devtools 
+### Step 2: Install devtools 
 
 ```r
 install.packages("devtools")
 ```
 
-### Step 4: Install [coronavirus R package](https://github.com/RamiKrispin/coronavirus) 
+### Step 3: Install [coronavirus R package](https://github.com/RamiKrispin/coronavirus) 
 
 ```r
 devtools::install_github("covid19r/coronavirus")
 ```
 
-#### In case Step 3 (installation of devtools) does not work, install the CRAN version of coronavirus package. It is not updated daily, but has sufficient data for plotting
+#### In case Step 2 (installation of devtools) does not work, install the CRAN version of coronavirus package. It is not updated daily, but has sufficient data for plotting
 
-### Step 3b: Install CRAN coronavirus R package
+### Step 2b: Install CRAN coronavirus R package (Only if Step 2 failed)
 
 ```r
 install.packages("coronavirus")
 ```
 
-### Step 5: Test all the installations
+### Step 4: Test all the installations
 ```r
 library(ggplot2)
 library(coronavirus)
