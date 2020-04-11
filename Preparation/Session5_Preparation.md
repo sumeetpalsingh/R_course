@@ -12,7 +12,7 @@ install.packages(c("ggplot2", "ggpubr"))
 ***
 ### Step 2: For the first part, we will use the data files from Session 4
 #### If you successfully prepared for Session 4, then Skip this Step.
-Download data file folder that was used for Session 4 (Click on link below).
+Download data file folder that was used for Session 4 (Click on link below).  
 [Download Data File Folder Link](https://github.com/sumeetpalsingh/R_course/raw/master/Preparation/Session4%20Files.zip)
 
 The folder is zipped. Unzip the folder. It will contain three files.
