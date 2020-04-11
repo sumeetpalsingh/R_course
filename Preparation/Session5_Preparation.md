@@ -79,7 +79,9 @@ library(tidyr)
 library(ggplot2)
 library(ggpubr)
 library(coronavirus)
-## If gganimate (Step 4) was installed 
+```
+```r
+## If bonus packages were installed 
 library(gganimate)
 library(ggforce)
 ```
