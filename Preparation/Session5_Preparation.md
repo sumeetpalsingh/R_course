@@ -1,13 +1,13 @@
 Making beautiful plots with ggplot
 ==================================
 
-In the fifth session, we will learn how to use [ggplot](https://ggplot2.tidyverse.org/) for plotting data in R
+In the fifth session, we will learn how to use [ggplot](https://ggplot2.tidyverse.org/) for plotting data in R and [ggpubr](https://rpkgs.datanovia.com/ggpubr/index.html) for adding significance statistics
 -------------------------------------------------------------------------------------
 
-### Step 1: Install ggplot2 package using the following command: 
+### Step 1: Install ggplot2 and ggpubr package using the following command: 
 
 ```r
-install.packages("ggplot2")
+install.packages(c("ggplot2", "ggpubr"))
 ```
 
 We will be plotting the trend of coronavirus cases in different countries around the world.
@@ -46,11 +46,24 @@ or
 install.packages("gganimate")
 ```
 
-### Step 5: Test all the installations
+### Bonus Step 5: Install [ggforce](https://ggforce.data-imaginist.com/index.html) to zoom at parts of the plot.
+If Step 2 (installation of devtools was successful)
+```r
+devtools::install_github("thomasp85/ggforce")
+```
+or
+
+```r
+install.packages("ggforce")
+```
+
+### Step 6: Test all the installations
 ```r
 library(ggplot2)
+library(ggpubr)
 library(coronavirus)
 ## If gganimate (Step 4) was installed 
 library(gganimate)
+library(ggforce)
 ```
 If everything loads without issues, you are ready for fifth session!
