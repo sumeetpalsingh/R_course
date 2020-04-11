@@ -13,6 +13,13 @@ install.packages(c("ggplot2", "ggpubr"))
 We will be plotting the trend of coronavirus cases in different countries around the world.
 For this, we will download [a daily updated dataset of coronavirus cases](https://github.com/RamiKrispin/coronavirus), courtsey of [Rami Krispin](https://github.com/RamiKrispin) and [Johns Hopkins](https://github.com/CSSEGISandData/COVID-19).
 
+### Step 2: For the first part, we will use the data files from Session 4
+### If you successfully prepared for Session 4, then Skip this Step.
+Download data file folder that will be used for the session (Click on link below).
+Download Data File Folder Link
+
+The folder is zipped. Unzip the folder. It will contain three files.
+
 #### Note: If devtools installation (Step 2) does not work, skip to Step 3b
 
 ### Step 2: Install devtools 
