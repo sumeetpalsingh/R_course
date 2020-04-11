@@ -15,34 +15,33 @@ For this, we will download [a daily updated dataset of coronavirus cases](https:
 
 ### Step 2: For the first part, we will use the data files from Session 4
 ### If you successfully prepared for Session 4, then Skip this Step.
-Download data file folder that will be used for the session (Click on link below).
-Download Data File Folder Link
+Download data file folder that was used for Session 4 (Click on link below).
+[Download Data File Folder Link](https://github.com/sumeetpalsingh/R_course/raw/master/Preparation/Session4%20Files.zip)
 
 The folder is zipped. Unzip the folder. It will contain three files.
 
-#### Note: If devtools installation (Step 2) does not work, skip to Step 3b
-
-### Step 2: Install devtools 
+### Step 3: Install devtools 
+#### Note: If devtools installation (Step 3) does not work, skip to Step 3b
 
 ```r
 install.packages("devtools")
 ```
 
-### Step 3: Install [coronavirus R package](https://github.com/RamiKrispin/coronavirus) 
+### Step 4: Install [coronavirus R package](https://github.com/RamiKrispin/coronavirus) 
 
 ```r
 devtools::install_github("covid19r/coronavirus")
 ```
 
-#### In case Step 2 (installation of devtools) does not work, install the CRAN version of coronavirus package. It is not updated daily, but has sufficient data for plotting
+#### In case Step 3 (installation of devtools) does not work, install the CRAN version of coronavirus package. It is not updated daily, but has sufficient data for plotting
 
-### Step 3b: Install CRAN coronavirus R package (Only if Step 2 failed)
+### Step 4b: Install CRAN coronavirus R package (Only if Step 3 failed)
 
 ```r
 install.packages("coronavirus")
 ```
 
-### Bonus Step 4: Install [gganimate](https://github.com/thomasp85/gganimate) to make dynamic plots!
+### Bonus Step 5: Install [gganimate](https://github.com/thomasp85/gganimate) to make dynamic plots!
 If Step 2 (installation of devtools was successful)
 ```r
 devtools::install_github('thomasp85/gganimate')
@@ -53,7 +52,7 @@ or
 install.packages("gganimate")
 ```
 
-### Bonus Step 5: Install [ggforce](https://ggforce.data-imaginist.com/index.html) to zoom at parts of the plot.
+### Bonus Step 6: Install [ggforce](https://ggforce.data-imaginist.com/index.html) to zoom at parts of the plot.
 If Step 2 (installation of devtools was successful)
 ```r
 devtools::install_github("thomasp85/ggforce")
@@ -64,8 +63,15 @@ or
 install.packages("ggforce")
 ```
 
-### Step 6: Test all the installations
+### Step 7: Test all the installations
 ```r
+## From Session 3
+library(dplyr)
+## From Session4
+library(readxl)
+library(tibble)
+library(tidyr)
+## New Packages
 library(ggplot2)
 library(ggpubr)
 library(coronavirus)
