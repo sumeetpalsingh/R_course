@@ -38,9 +38,6 @@ All of the others
 
 Good luck!
 ***
-You can also view a lot of ggplots along with code at [R Graph Catalog](http://shiny.stat.ubc.ca/r-graph-catalog/)
-
-***
 Bonus exercise for ggplot needs you to watch two YouTube videos!
 -----
 
