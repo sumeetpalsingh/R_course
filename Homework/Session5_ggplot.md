@@ -52,7 +52,7 @@ With each video, you can code along the exercises he proposes.
 
 [**Video 2: Part 2 of the course**](https://www.youtube.com/watch?v=0m4yywqNPVY)
 
-[**Exercises for the course**](http://htmlpreview.github.io/?)
+[**Exercises for the course**](http://htmlpreview.github.io/?https://github.com/sumeetpalsingh/R_course/blob/master/Homework/exercises_ggplot.html)
 
 Good luck!
 
