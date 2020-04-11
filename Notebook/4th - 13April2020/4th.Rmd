@@ -1,0 +1,129 @@
+---
+title: "R coursework with Sumeet"
+subtitle: "4th : File I/O"
+author: "Yura Song"
+date: '`r format(Sys.Date(), "%B %d, %Y")`'
+output:
+  html_notebook:
+    toc: yes
+---
+
+```{r setup, include=FALSE, cache=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = ".")
+```
+
+# Preparation
+
+## Installation of required packages
+
+```{r}
+install.packages(c("readr", "readxl")) # for reading files
+install.packages(c("tibble", "tidyr")) # for changing to tidy data
+install.packages("stringr") # for string manipulation
+```
+
+## Attach the libraries
+
+If the libraries are installed properly, all libraries should load without any error.
+
+```{r, warning=F, message=F}
+library(dplyr)
+library(readr)
+library(readxl)
+library(tibble)
+library(tidyr)
+library(stringr)
+```
+
+# Introduction
+
+In this notebook, as an introduction of R, I will explain to you how to import files on the R global environment and play with the data. Since R is mainly working with *function*, which has same concept with *command* in DOS or LINUX. We will start to learn how to use the functions to play on R.
+
+# Dealing with the Dataset
+
+### Working Directory and files
+Before starting the work on R, what we should check is current **location**, where you are working in the system. On R, the working directory should be same as where you put your files. If the current directory and the location of file is different, the system may show the error message.
+
+To check my current directory, we could use *getwd* function, which means get working directory.
+```{r}
+getwd()
+```
+
+However, if your current location is not where you put your files? Then you could use *setwd* function, which means set working directory. In this case, you should put the **address of the target folder**.
+```{r}
+setwd("~/Desktop/R_course/Notebook/4th - 13April2020/")
+```
+
+So, now we are in the directory where we put the files. If you want to check which file is included in the directory which has been set as working directory, you could use *list.files* function.
+```{r}
+list.files()
+```
+
+# Import the files
+
+## read.r
+
+The goal of *readr* is to provide a fast and friendly way to read rectangular data, such as tidy dataset. It is designed to flexibly parse many types of data found in the wild, while still cleanly failing when data unexpectedly changes.
+
+```{r}
+TwoDrugs <- read_csv("Session4 Files/ExperimentTwoDrugs.csv")
+```
+
+```{r}
+head(TwoDrugs)
+```
+
+## read.delim
+
+The *read.delim* function is typically used to read in **delimited text files**, where data is organized in a data matrix with rows representing cases and columns representing variables. We can also write a matrix or data frame to a text file using the write.table function. 
+
+When you want to import the data in R, we could use *read.delim* or *read.table* function. Both does not have that difference, but *read.table* only reads the data with table format, as like excel sheet. However, in case of *read.delim*, it reads all the files which is deliminated by something, such as comma or tab. 
+
+The usage of function is as below,
+
+**read.delim(file, header=TRUE, sep="\t")**
+  - file – A file location.
+  - header – Whether the first line describes the column names.
+  - sep – The table delimiter, often times a tab (\t) or comma.
+
+## readxl
+
+Actually, most of you will use **excel files**, rather than .csv or .txt. On R, reading data from an Excel file or Workbook object into a data.frame is also available. 
+
+The **readxl** makes it easy to get data out of Excel and into R. Compared to many of the existing packages (e.g. gdata, xlsx, xlsReadWrite) readxl has no external dependencies, so it’s easy to install and use on all operating systems. It is designed to work with tabular data.
+
+readxl supports both the legacy .xls format and the modern xml-based .xlsx format. 
+
+```{r}
+TwoDrugs <- read_xls(path = "Session4 Files/ExperimentTwoDrugs.xls")
+head(TwoDrugs)
+```
+
+Also, **readxl** allows us to import the different sheet of excel worksheet. To clarify which datasheet we would like to import, we should give *sheet* information.
+
+```{r}
+Experiment <- read_xls(path = "Session4 Files/ExperimentWithFeatures.xls", sheet = 1)
+
+Experiment2 <- read_xls(path = "Session4 Files/ExperimentWithFeatures.xls", sheet = 2)
+```
+
+What if we know the name of different worksheet? Still the name could be used for giving sheet information.
+```{r}
+Experiment2 <- read_xls(path = "Session4 Files/ExperimentWithFeatures.xls", sheet = "BadNaming")
+```
+
+# Export the files
+
+## write.table
+
+The R base function *write.table()* can be used to export a data frame or a matrix to a file.
+
+```{r}
+write.table(Experiment, "experiment.csv", 
+            quote=F, sep=",",
+            row.names = TRUE, col.names = TRUE)
+```
+
+For the *sep* option, we could give tab (\t), semi-colon (;), comma(,) or just a space ( ). It depends in the environment which you would like to use further. For the tab-deliminated, it is recommended to save the data as **.txt** format, rather than **.csv** format.
+
