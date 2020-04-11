@@ -9,16 +9,18 @@ In the fifth session, we will learn how to use [ggplot](https://ggplot2.tidyvers
 ```r
 install.packages(c("ggplot2", "ggpubr"))
 ```
-
-We will be plotting the trend of coronavirus cases in different countries around the world.
-For this, we will download [a daily updated dataset of coronavirus cases](https://github.com/RamiKrispin/coronavirus), courtsey of [Rami Krispin](https://github.com/RamiKrispin) and [Johns Hopkins](https://github.com/CSSEGISandData/COVID-19).
-
+***
 ### Step 2: For the first part, we will use the data files from Session 4
-### If you successfully prepared for Session 4, then Skip this Step.
+#### If you successfully prepared for Session 4, then Skip this Step.
 Download data file folder that was used for Session 4 (Click on link below).
 [Download Data File Folder Link](https://github.com/sumeetpalsingh/R_course/raw/master/Preparation/Session4%20Files.zip)
 
 The folder is zipped. Unzip the folder. It will contain three files.
+***
+### Step 3 - 4: Install new dataset for analysis
+We will be plotting the trend of coronavirus cases in different countries around the world.
+For this, we will download [a daily updated dataset of coronavirus cases](https://github.com/RamiKrispin/coronavirus), courtsey of [Rami Krispin](https://github.com/RamiKrispin) and [Johns Hopkins](https://github.com/CSSEGISandData/COVID-19).
+
 
 ### Step 3: Install devtools 
 #### Note: If devtools installation (Step 3) does not work, skip to Step 3b
@@ -40,6 +42,8 @@ devtools::install_github("covid19r/coronavirus")
 ```r
 install.packages("coronavirus")
 ```
+***
+#### Bonus installations to test additional features. Recommended, but can skip to Step 7
 
 ### Bonus Step 5: Install [gganimate](https://github.com/thomasp85/gganimate) to make dynamic plots!
 If Step 2 (installation of devtools was successful)
@@ -62,7 +66,7 @@ or
 ```r
 install.packages("ggforce")
 ```
-
+***
 ### Step 7: Test all the installations
 ```r
 ## From Session 3
