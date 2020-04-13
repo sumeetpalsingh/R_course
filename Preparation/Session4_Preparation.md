@@ -7,7 +7,7 @@
 The folder is zipped. Unzip the folder. It will contain three files. 
 
 ***
-#### If you successfully installed Tidyverse, no additional preparation is required! You are ready for the session. 
+#### If you successfully installed Tidyverse for Session 3, no additional preparation is required! You are ready for the session. 
 #### If you had trouble installing Tidyverse, continue to Step 2 - 5.
 ***
 #### Step 2: Install readr and readxl packages for reading files: 
