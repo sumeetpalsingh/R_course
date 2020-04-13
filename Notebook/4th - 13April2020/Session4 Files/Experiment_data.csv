@@ -1,0 +1,11 @@
+Cells_Control,Age_Control,Gender_Control,Cells_Drug,Age_Drug,Gender_Drug,Day
+3,32,F,12,12,M,Mo
+4,34,M,15,6,F,Mo
+4,21,F,13,45,M,Tu
+5,53,M,12,76,F,Tu
+2,13,M,9,65,F,Tu
+6,12,F,12,34,M,Tu
+3,35,F,15,53,M,We
+NA,NA,NA,14,54,F,We
+NA,NA,NA,16,23,F,We
+NA,NA,NA,12,12,F,We

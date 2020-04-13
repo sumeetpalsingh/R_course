@@ -1,6 +1,6 @@
 ---
 title: "R coursework with Sumeet"
-subtitle: "4th : File I/O"
+subtitle: "4th : File I/O and tidy transformation"
 author: "Yura Song"
 date: '`r format(Sys.Date(), "%B %d, %Y")`'
 output:
@@ -127,3 +127,280 @@ write.table(Experiment, "experiment.csv",
 
 For the *sep* option, we could give tab (\t), semi-colon (;), comma(,) or just a space ( ). It depends in the environment which you would like to use further. For the tab-deliminated, it is recommended to save the data as **.txt** format, rather than **.csv** format.
 
+## **TIP for this session - regarding the file format**
+
+**.csv file** is the one save the data with comma-separated version, in other words, value in each column has been separated in comma (,). For .csv files, you could use normal text editor to open and edit the files. What you should consider is that .csv format only saves the worksheet which you worked at the moment of saving.
+
+Actually, space is not that good separator, since people tends to put the spaces in the name of values. Therefore, it is highly recommended to use other seperators, for instance, comma(,) or tab(\t). _Some European countries, comma could be uses as a decimal point, R would recognize the decimal point as a deliminator_.
+
+When you saved or load the files with the duplicated rownames, it will not let you do further works, just returning the error message that your file has the **duplicated row names**. In this case, you should change the duplicated rownames as A and A.1. 
+
+## saveRDS
+
+There is another way of saving the data, as the **r data structure**. You do not have to specify any further parametres, just object and file name.
+```{r}
+saveRDS(object = Experiment2, file = "Session4 Files/New_file_saveRDS.rds")
+```
+
+```{r}
+list.files()
+```
+
+# Tidy Transformation
+
+## Load the data
+
+We are going to focus on the excel files which we have worked. We will load the files on the environment.
+
+Before starting the further job, we will clean the environment to initialize. This only removes the variables which we have saved the data, not the libraries.
+```{r}
+rm(list=ls())
+```
+
+```{r}
+Expe <- read_xls(path = "Session4 Files/ExperimentTwoDrugs.xls")
+glimpse(Expe)
+```
+
+Here, as you could see, *NA* values are coming out. It means that it does not have the value, but other columns have. We could check the loaded data with *glimpse()*, but we could not do something further. Therefore, if we would like to do something further, such as transformation. 
+
+## Transformation
+
+Function *gather()*, it gathers all the information and put it as one column. However, we will not use *gather()* function today since it has been retired. To transform, we will use *pivot_longer()*, which has been recommended on the help page of *gather()*. We will use **tidyverse** to work.
+
+Here, we would like to collect all the information and make it into one column. We should specify **data**, **columns** to combine together and **names_to**, the column name which will be given on the transformed data.
+```{r}
+Expe %>% 
+  pivot_longer(cols = everything(), # take all the columns in the data
+               names_to = "Treatment",
+               values_to = "Cells") # The values to get
+```
+
+```{r}
+Expe %>% 
+  pivot_longer(cols = everything(), 
+               names_to = "Treatment",
+               values_to = "Cells",
+               values_drop_na = TRUE) # Filter out the missing values 
+```
+
+However, still the data looks a little bit shuffled. We will arrange the data.
+
+```{r}
+Expe %>% 
+  pivot_longer(cols = everything(), 
+               names_to = "Treatment",
+               values_to = "Cells",
+               values_drop_na = TRUE) %>% 
+  arrange(Treatment) -> Expe.tidy
+
+Expe.tidy
+```
+
+Now, all the observations from the same treatment group has been coming up together. All arragned without missing values. 
+
+What if we would like to exclude certain condition? Then we could use negative collection. Or you could specify the names of the certain columns which you would like to transform.
+```{r}
+Expe %>% 
+  pivot_longer(cols = -Drug1, 
+               names_to = "Treatment",
+               values_to = "Cells",
+               values_drop_na = TRUE) %>% 
+  arrange(Treatment)
+```
+
+## Statistical analysis
+
+Since our data has been transformed as tidy format, we now could run the statistical analysis. 
+
+### Summary statistics
+
+#### Average values
+
+```{r}
+Expe.tidy %>% 
+  group_by(Treatment) %>%
+  summarise(Mean.cells = mean(Cells))
+```
+
+#### Standard Deviation (SD)
+
+```{r}
+Expe.tidy %>% 
+  group_by(Treatment) %>%
+  summarise(sd.cells = sd(Cells))
+```
+
+#### Standard error of mean (SEM)
+
+We also could calculate SEM, since SEM is the value which SD divided by the square root of number of observations.
+
+Here, we have SD and number of cells.
+```{r}
+Expe.tidy %>% 
+  group_by(Treatment) %>%
+  summarise(sd.cells = sd(Cells), 
+            Number.Cells=n()) -> Expe.stats # return number of observations following the classification
+
+Expe.stats
+```
+
+Now, we are ready to calculate SEM and we will use *mutate()* function.
+```{r}
+Expe.stats %>% 
+  mutate(SEM.cells = sd.cells / sqrt(Number.Cells)) -> Expe.sem 
+Expe.sem
+```
+
+##### Write own function
+
+What if you would like to do it faster? It is possible by defining the function. Here, we will write the **custom function** by ourselves.
+
+The format of custom function is as below.
+
+**name <- function(argument){operation**
+**return()}**.
+
+We could save this function as R file, **.R** format.
+```{r}
+sem <- function(data, multiply=1){
+  sd.data <- sd(data) # calculate stdev
+  number.samples <- length(data)
+  sem.data <- sd.data/sqrt(number.samples)
+  return(sem.data * multiply)
+} 
+```
+
+When you saved the function as .R format? We could load the function with *source()* function.
+```{r}
+source("SEM.R")
+```
+
+You could run the defined whole structure on the console, then the function will be loaded on your environment. Also, we could use the function as like this.
+
+```{r}
+sem(c(1:10))
+```
+
+Let's test whether the result is correct. The result should be same if the function has been correctly defined.
+```{r}
+sd(c(1:10)) / sqrt(10)
+```
+
+```{r}
+sem(c(1:10), multiply = 2) # Clatification of multiply == SEM * (multiply)
+```
+
+Okay, we will use this custom function on our data.
+```{r}
+Expe.tidy %>% group_by(Treatment) %>%
+  summarise(SEM.cells = sem(Cells))
+```
+
+#### Coefficient of variation (CV)
+
+CV is the value to see how much the dataset is sparsed.
+
+```{r}
+Expe.tidy %>% group_by(Treatment) %>%
+  summarise(Mean.cells = mean(Cells), SD.cells = sd(Cells)) %>%
+  mutate(CV.cells = SD.cells / Mean.cells)
+```
+
+##### Make own function
+
+```{r}
+cv <- function(data){
+  sd.data <- sd(data)
+  mean.data <- mean(data())
+  cv.data <- sd.data / mean.data
+  return(cv.data)
+} 
+```
+
+The function is also saved **SEM.R** file, so we need to re-load the file. It is recommended to save the functions as a collection. 
+```{r}
+source("SEM.R")
+```
+
+```{r}
+Expe.tidy %>% group_by(Treatment) %>% summarise(CV.cells = cv(Cells))
+```
+
+### ANOVA
+
+```{r}
+Exp.model <- aov(Cells ~ Treatment, data=Experiment)
+
+# Combined effect of treatment and age
+Exp.model1 <- aov(Cell ~ Treatment + Age, data=Experiment) 
+
+# Interaction added
+Exp.model2 <- aov(Cell ~ Treatment * Age, data=Experiment)
+```
+
+#### Rule out the parametres
+
+```{r}
+anova(Exp.model, Exp.model1)
+```
+
+```{r}
+summary(Exp.model2)
+```
+
+# Example - practice
+
+## Example 1
+
+This excel contains linked data, different parametres from two different groups. The parametres are all linked, not separated. **We should not shuffle the data.**
+```{r}
+Experiment <- read_xls("Session4 Files/ExperimentWithFeatures.xls", sheet=1)
+
+glimpse(Experiment)
+```
+
+```{r}
+head(Experiment)
+```
+
+```{r}
+Experiment %>% pivot_longer(cols = -Day, 
+                            names_to = c(".value", "Treatment"),
+                            names_sep = "_") 
+```
+
+```{r}
+Experiment %>% 
+  pivot_longer(cols = -Day, 
+               names_to = c(".value", "Treatment"),
+               names_sep = "_") %>%
+  drop_na() %>%
+  arrange(Treatment)
+```
+
+## Example 2
+
+### Rename the column
+
+```{r}
+Experiment2 <- read_xls("Session4 Files/ExperimentWithFeatures.xls", sheet=2)
+```
+
+```{r}
+Experiment2 <- rename(.data = Experiment2,
+                      Cells.control = Control,
+                      Age.control = Age...2,
+                      Gender.control = Gender...3,
+                      Cells.drug = Drug,
+                      Age.drug = Age...5,
+                      Gender.drug = Gender...6)
+Experiment2
+```
+
+```{r}
+Experiment2 %>% 
+  pivot_longer(cols = -Day,
+               names_to = c(".value","Treatment"),
+               names_sep="_") # names_sep does not work with ".".
+```
