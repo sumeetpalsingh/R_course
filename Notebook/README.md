@@ -12,3 +12,5 @@ Click on the link below to view the html files
 
 [**Session 4: File I/O and Tidy data**](https://htmlpreview.github.io/?https://github.com/sumeetpalsingh/R_course/blob/master/Notebook/4th%20-%2013April2020/4th.nb.html)
 
+[**Session 5: Introduction to ggplot**](https://htmlpreview.github.io/?
+https://github.com/sumeetpalsingh/R_course/blob/master/Notebook/5th%20-%2015April2020/5th.nb.html)
