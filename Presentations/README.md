@@ -8,3 +8,5 @@ Slides from the presentation (Click on Link Below to View)
 [**Session 3: Introduction to dplyr**](http://htmlpreview.github.io/?https://github.com/sumeetpalsingh/R_course/blob/master/Presentations/Session3_Presentation.html)
 
 [**Session 4: File I/O and Tidy transformation**](http://htmlpreview.github.io/?https://github.com/sumeetpalsingh/R_course/blob/master/Presentations/Session4_Presentation.html)
+
+[**Session 5: Introduction to ggplot**](http://htmlpreview.github.io/?https://github.com/sumeetpalsingh/R_course/blob/master/Presentations/Session5_Presentation.html)
