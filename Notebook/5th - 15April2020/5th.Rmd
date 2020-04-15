@@ -1,0 +1,426 @@
+---
+title: "R coursework with Sumeet"
+subtitle: "5th - Introduction to ggplot"
+author: "Yura Song"
+date: '`r format(Sys.Date(), "%B %d, %Y")`'
+output:
+  html_notebook:
+    toc: yes
+---
+
+```{r setup, include=FALSE, cache=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = ".")
+```
+
+```{r libraries, message=FALSE}
+library(tidyverse)
+library(ggplot2)
+library(ggpubr)
+
+library(readxl)
+library(tibble)
+```
+
+# Preparation
+
+## Installation coronavirus R package
+
+```{r, message=FALSE}
+devtools::install_github("covid19r/coronavirus")
+library(coronavirus)
+```
+
+## Install [gganimate](https://github.com/thomasp85/gganimate) and [ggforce](https://ggforce.data-imaginist.com/index.html)!
+
+```{r, message=FALSE}
+devtools::install_github('thomasp85/gganimate')
+devtools::install_github("thomasp85/ggforce") # install.packages("ggforce")
+
+library(gganimate)
+library(ggforce)
+```
+
+If everything loads without issues, you are ready for fifth session!
+
+# ggplot2 - Creating Graphics
+
+The concept has been started by the book called **Grammer of Graphics**, a book by statisticians, introducing how to make the results visualized. 
+
+For making a plot with the package **ggplot2**, it needs data, aesthetics and geometrics.
+
+## Plotting
+
+### Data preparation
+
+```{r}
+Exp <- read_xls("Session4 Files/ExperimentTwoDrugs.xls")
+glimpse(Exp)
+```
+
+Since the data is not **tidy format**, we need to transfer our data.
+```{r}
+Exp %>% pivot_longer(cols = everything(),
+                     names_to = "Treatment", 
+                     values_to = "Cells") %>%
+  drop_na() %>%
+  arrange(Treatment) -> Exp
+
+head(Exp)
+```
+
+### Plotting
+
+We will use **ggplot2** package to plot the data.
+
+#### Boxplot
+
+##### Iniation
+
+Before starting plotting, we should clarify which one is data, aesthetics and geometrics. First thing we need to do is **initiation**, defining data and a part of aesthetics.
+
+```{r}
+p.2Drug <- ggplot(data = Exp,
+                  mapping = aes(x=Treatment, y=Cells))
+p.2Drug
+```
+
+You will see the empty plot, since we did not set the geometrics for the plot. In other word, the type of plot.
+
+##### Plotting the dataset
+
+Here, we will add geometrics, start with **geom_**. This will provide several different options to plot the data properly. Here, we will start with **boxplot**. 
+```{r}
+p.2Drug + geom_boxplot()
+```
+
+If we would like to add further geometrics, always the options are connected with **+** sign. Here, we will add the point of each value in the data.
+```{r}
+p.2Drug + geom_boxplot() + geom_point()
+```
+
+*geom_jitter()* will give a little bit of noise, let you know all the points without overlapping of same values. 
+```{r}
+p.2Drug + geom_boxplot() + geom_jitter()
+```
+
+##### Changing attributes
+
+Remember that the aesthetics controls how the datasets are plotted. If you would like to change the complete plot, it is not covered-range of aesthetics.
+
+If you would like to give colors on the dots, 
+```{r}
+p.2Drug + geom_boxplot() + 
+  geom_jitter(color = "red")
+```
+
+Now, let's say that we are not interested in checking all the values. However, if we would like to give different colors following the treatment? 
+```{r}
+p.2Drug + geom_boxplot() + 
+  geom_jitter(mapping = aes(color = Treatment))
+```
+
+Well, what if the color of boxplot would be grey? We could change by specifying the color parameter on *geom_boxplot()*.
+```{r}
+p.2Drug + geom_boxplot(color = "grey") + 
+  geom_jitter(mapping = aes(color = Treatment))
+```
+
+The color of data value is actually decided by default, but we could change it. However, it would be a little complex, so we will not deal with in some session after.
+
+What if we would like to change the color of boxes following the group?
+```{r}
+p.2Drug + geom_boxplot(mapping = aes(color = Treatment)) + 
+  geom_jitter(mapping = aes(color = Treatment))
+```
+
+Actually, the order of functions is quite important. What gets first, it is always plotted first. 
+```{r}
+p.2Drug +  geom_jitter(mapping = aes(color = Treatment)) +
+  geom_boxplot(mapping = aes(color = Treatment)) 
+```
+
+What if we would like to make the jitters little less spreaded? Also giving transparency? For the transparency, we could change the **alpha** value in *geom_jitter()*.
+```{r}
+p.2Drug + geom_boxplot(mapping = aes(color = Treatment)) + 
+  geom_jitter(mapping = aes(color = Treatment), 
+              alpha = 0.5)
+```
+
+It seems that some outliers. Then we need to modify the box.
+```{r}
+p.2Drug + geom_boxplot(mapping = aes(color = Treatment), outlier.shape = NA) + 
+  geom_jitter(mapping = aes(color = Treatment), alpha = 0.5)
+```
+
+Okay, so we will type the last plot. If you would like to see plot, what you need to do is type the variable on the console.
+```{r}
+p.2Drug + geom_boxplot(mapping = aes(color = Treatment), outlier.shape = NA) + 
+  geom_jitter(mapping = aes(color = Treatment), alpha = 0.5) -> p.final
+
+p.final
+``` 
+
+A big advantage of **ggplot2** is that it is easy to change the parameters. For example, we could add another layers. For example, we do not want to see the grey background? We  could change the theme!
+
+You could check the theme by typing *theme_*, to see the pre-defined themes. 
+```{r}
+p.final + theme_classic()
+```
+
+Also we could define the theme, as we want. For example, changing the position of legend?
+```{r}
+p.final + theme_classic() +
+theme(legend.position = "top") -> p.final # bottom, left or right also available.
+
+p.final
+```
+
+Also, we could change the size of texts.
+
+##### Adding statistics
+
+What if we would like to add the **statistics**? It is available with **ggpubr** package.
+
+We will start to compare the means of different groups. Since we have three groups, we will use **ANOVA**. 
+```{r}
+p.final + stat_compare_means(method="anova",
+                             label.y = 18) # Set the location of p-value
+```
+
+Also we could perform **t.test**, comparing each group to control.
+```{r}
+p.final + stat_compare_means(method="t.test",
+                             ref.group = "Control") 
+```
+
+Rather than putting the P-value on each, we could put asteroid to show significancy.
+```{r}
+p.final + stat_compare_means(method="t.test",
+                             ref.group = "Control",
+                             label = "p.signif")
+```
+
+In other way, we could set the comparison as a list, collection of vector.
+````{r}
+my_comparisons <- list(c("Control", "Drug1"),
+                       c("Drug1", "Drug2"),
+                       c("Control", "Drug2"))
+```
+
+```{r}
+p.final + 
+  stat_compare_means(method = "anova",
+                     label.y = 23) +
+  stat_compare_means(method = "t.test",
+                     comparisons = my_comparisons,
+                     label = "p.signif")
+```
+
+Size of asteroid could be changed with *cex* parameter.
+```{r}
+p.final + 
+  stat_compare_means(method = "anova",
+                     label.y = 23) +
+  stat_compare_means(method = "t.test",
+                     comparisons = my_comparisons,
+                     label = "p.signif", cex = 20)
+```
+
+#### Violin Plot
+
+```{r}
+p.final + 
+  stat_compare_means(method = "anova",
+                     label.y = 23) +
+  stat_compare_means(method = "t.test",
+                     comparisons = my_comparisons,
+                     label = "p.signif") +
+  geom_violin(alpha = 0.2)
+```
+
+#### Save the plot
+
+Once you have made your own plot, we could save the very last plot by using *ggsave()*. Also, you could change the resolution. Supported file format is png, jpg, jpeg, svg and pdf. For svg, you need **svglite** library.
+```{r}
+ggsave(filename = "myplot.pdf")
+```
+
+### Plotting - example with another data
+
+#### Data preparation
+
+```{r}
+Experiment <- read_xls("Session4 Files/ExperimentWithFeatures.xls")
+glimpse(Experiment)
+```
+
+```{r}
+Experiment %>% 
+  pivot_longer(cols = -Day, 
+               names_to = c(".value", "Treatment"),
+               names_sep = "_") %>%
+  drop_na() %>% 
+  arrange(Treatment) -> Experiment
+
+Experiment
+```
+
+#### Plotting
+
+We will plot the cells, based on the Treatment.
+
+##### Initiation
+
+```{r}
+p.Exp <- ggplot(data = Experiment, 
+                mapping = aes(x = Treatment, y = Cells))
+```
+
+##### Geometry
+
+```{r}
+p.Exp + geom_boxplot() + geom_jitter()
+```
+
+But the individual points will be colored based on the gender. Also, the shape of data could be also changed based on the day. Also, the size of point could be changed, since it would be a litte small for visualization.
+
+```{r}
+p.Exp + geom_boxplot() + 
+  geom_jitter(mapping = aes(col = Gender, shape = Day),
+              size = 3) +
+  theme_classic() + theme(legend.position = "bottom")
+```
+
+## Facet
+
+Facet is the different faces, one face which we are watching. On **ggplot**, it is defined by group.
+
+Addtion of facet makes you split the plot based on the groups. The plots will be put into the individual plots. Here, we will try to split it based on gender.
+
+```{r}
+p.Exp + geom_boxplot() + 
+  geom_jitter(mapping = aes(col = Gender, shape = Day),
+              size = 3) +
+  theme_classic() + theme(legend.position = "bottom") -> p.final
+
+p.final + facet_grid(~Gender)
+```
+
+### Color based on age, split it based on gender
+
+```{r}
+p.Exp + geom_boxplot() + 
+  geom_jitter(mapping = aes(col = Age, shape = Day),
+              size = 3) +
+  theme_classic() + theme(legend.position = "bottom") -> p.final
+
+p.final + facet_grid(~Gender)
+```
+
+### Box color based on the treatment
+
+```{r}
+p.Exp + geom_boxplot(aes(fill = Treatment), alpha = 0.5) + 
+  geom_jitter(mapping = aes(col = Age, shape = Day),
+              size = 3) +
+  theme_classic() + theme(legend.position = "bottom") -> p.final
+
+p.final + facet_grid(~Gender)
+```
+
+### Add statistical test
+
+```{r}
+p.final + facet_grid(~Gender) +
+  stat_compare_means(method = "t.test", label = "p.signif",
+                     ref.group = "Control")
+```
+
+# COVID dataset
+
+It was collected by Johns Hopkins University, and it is updated recently.
+
+```{r}
+library(coronavirus)
+```
+
+## Digging into the dataset
+
+The data included in this package is called **coronavirus**. This is already in tidy format and it is a big dataset. Recommend to check the data by *View()*.
+```{r}
+glimpse(coronavirus)
+```
+
+## Plot the total number of confirmed cases for particular countries
+
+```{r}
+# Remove information which we do not need
+
+coronavirus %>%
+  filter(type == "confirmed") -> coronavirus
+
+table(coronavirus$type)
+```
+
+Here, we will calculate cumulative sum, with *cumsum* function. We will do it country by country.
+```{r}
+coronavirus %>%
+  group_by(Country.Region) %>%
+  mutate(TotalCases = cumsum(cases)) -> coronavirus
+
+View(coronavirus)
+```
+
+We will select some interested countries and only save the data related to those countries.
+```{r}
+country.select <- c("India", "US", "Singapore")
+
+coronavirus %>%
+  filter(Country.Region %in% country.select) -> coronavirus.select
+```
+
+### Plotting
+
+```{r}
+p.corona <- ggplot(data = coronavirus.select, 
+                   mapping = aes(x=date, y=log10(TotalCases)))
+```
+
+```{r}
+p.corona + geom_line(mapping = aes(color = Country.Region))
+```
+
+```{r}
+p.corona + geom_line(mapping = aes(color = Country.Region)) +
+  geom_point(mapping = aes(color = Country.Region))
+```
+
+# Bonus track - you could skip if you could not install the packages properly.
+
+## Dynamics 
+
+With **gganimate** package, you could make the plot dynamic following the dynamics.
+
+```{r}
+library(gganimate)
+
+p.corona + 
+  geom_line(mapping = aes(color = Country.Region)) +
+  geom_point(mapping = aes(color = Country.Region)) +
+  transition_reveal(date)
+```
+
+Also you could save it as *avi* or *jpg* format.
+
+## Test graphics
+
+This package is usually used for zoom the part of plot. This is a lot powerful when you would like to see the dense region.
+```{r}
+library(ggforce)
+
+p.corona + 
+  geom_line(mapping = aes(color = Country.Region)) +
+  geom_point(mapping = aes(color = Country.Region)) +
+  facet_zoom(x = date > "2020-01-15" & date < "2020-02-15")
+```
