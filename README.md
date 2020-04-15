@@ -17,10 +17,6 @@
 ***
 ### Upcoming sessions
 
-#### Session 4: Reading and Writing Files with transformation to tidy format
-#### Monday, 13 April, 2020. 5 PM Brussels Time (GMT +2) (**See time for your zone below**). 
-YouTube link (can access from the playlist link mentioned above, or): https://youtu.be/jv4mnD5lhms
-***
 #### Session 5: Introduction to ggplot
 #### Wednesday, 15 April, 2020. 5 PM Brussels Time (GMT +2) (**See time for your zone below**).
 YouTube link (can access from the playlist link mentioned above, or): https://www.youtube.com/watch?v=21MXKios8uw
