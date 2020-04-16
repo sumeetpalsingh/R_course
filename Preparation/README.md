@@ -11,3 +11,5 @@ Prepartion guide for each session
 [**Session 4: File I/O and Tidy transformation**](https://github.com/sumeetpalsingh/R_course/blob/master/Preparation/Session4_Preparation.md)
 
 [**Session 5: Introduction to ggplot**](https://github.com/sumeetpalsingh/R_course/blob/master/Preparation/Session5_Preparation.md)
+
+[**Session 6: Introduction to R Markdown**](https://github.com/sumeetpalsingh/R_course/blob/master/Preparation/Session6_Preparation.md)
