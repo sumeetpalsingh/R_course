@@ -26,3 +26,5 @@ library(coronavirus)
 
 ### Download an image (or you could use an image file of your liking)
 [R Logo](https://github.com/sumeetpalsingh/R_course/raw/master/Preparation/R_logo.png)
+
+### You are ready for sixth session!
