@@ -24,6 +24,8 @@ Cheat Sheet (Reference Manuals) for various topics
 
 [Data Visualization with ggplot2](https://github.com/sumeetpalsingh/R_course/blob/master/CheatSheet/data-visualization-2.1.pdf)
 
+[Colors in R](https://github.com/sumeetpalsingh/R_course/blob/master/CheatSheet/Rcolor.pdf)
+
 ### Session 6: Introduction to R Markdown
 
 [R Markdown](https://github.com/sumeetpalsingh/R_course/blob/master/CheatSheet/rmarkdown-cheatsheet.pdf)
