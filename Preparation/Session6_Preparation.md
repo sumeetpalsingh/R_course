@@ -31,10 +31,15 @@ library(shinydashboard)
 ## Should run without any error. 
 ```
 
-### Step 4: Download R Markdown Cheat Sheat
-[R Markdown Cheat Sheat](https://github.com/sumeetpalsingh/R_course/blob/master/Preparation/rmarkdown-cheatsheet.pdf)
+### Step 4: Download R Markdown Cheat Sheet and Reference
+[R Markdown Cheat Sheet](https://github.com/sumeetpalsingh/R_course/blob/master/CheatSheet/rmarkdown-cheatsheet.pdf)
 
-### Step 5: Download an image (or you could use an image file of your liking)
+[R Markdown Reference Guide](https://github.com/sumeetpalsingh/R_course/blob/master/CheatSheet/rmarkdown-reference.pdf)
+
+### Step 5: Download R Shiny Cheat Sheet
+[R Shiny Cheat Sheet](https://github.com/sumeetpalsingh/R_course/blob/master/CheatSheet/shiny.pdf)
+
+### Step 6: Download an image (or you could use an image file of your liking)
 [R Logo](https://github.com/sumeetpalsingh/R_course/blob/master/images/R_logo.png)
 
 ### You are ready for sixth session!
