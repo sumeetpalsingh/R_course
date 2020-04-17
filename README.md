@@ -12,7 +12,10 @@
 
 - ***Homework*** contains **practice expercises** for each session.
 
-- ***Presentations*** contains **slides** for each session. Click on link provided to view the html files (Github does not directly render .html files)
+- ***Presentations*** contains **slides** for each session. Click on link provided to view the html files (Github does not directly render .html files).
+
+- ***CheatSheet*** contains **reference manuals** for packages used in each session. Click on link provided to view and download the pdf files.
+
 ***
 ***
 ### Upcoming sessions
