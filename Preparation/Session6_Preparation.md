@@ -35,6 +35,6 @@ library(shinydashboard)
 [R Markdown Cheat Sheat](https://github.com/sumeetpalsingh/R_course/blob/master/Preparation/rmarkdown-cheatsheet.pdf)
 
 ### Step 5: Download an image (or you could use an image file of your liking)
-[R Logo](https://github.com/sumeetpalsingh/R_course/blob/master/Preparation/R_logo.png)
+[R Logo](https://github.com/sumeetpalsingh/R_course/blob/master/images/R_logo.png)
 
 ### You are ready for sixth session!
