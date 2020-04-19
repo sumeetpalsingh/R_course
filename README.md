@@ -47,4 +47,6 @@ You can either LogIn using Google / Github credentials, or open a new account.
 
 Once you LogIn, you should see the Workspace for the project opening up on your browser. **Note that this is a temporary project and not permanently imported into your Cloud workspace**. To import the project into your personal workspace, click on 'Save a Permanent Copy' button in the top panel. 
 
+The RStudio Cloud has same folder structure as the GitHub directory and can be used to locate files and images.
+
 ![RStudioCloud](https://github.com/sumeetpalsingh/R_course/blob/master/images/RStudioCloud.png)
