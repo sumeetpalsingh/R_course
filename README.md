@@ -35,3 +35,16 @@ Germany | 5 PM
 GMT (London) | 3 PM
 Mumbai | 8:30 PM
 EDT (New York) | 11 AM
+***
+***
+### Deploying the project on RStudio Cloud
+
+If you have issues installing packages on RStudio on your computer, you can follow the course using [RStudio Cloud](https://rstudio.cloud/).
+
+For this, go to the RStudio Cloud project page for this course: <https://rstudio.cloud/project/1172996> 
+
+You can either LogIn using Google / Github credentials, or open a new account. 
+
+Once you LogIn, you should see the Workspace for the project opening up on your browser. **Note that this is a temporary project and not permanently imported into your Cloud workspace**. To import the project into your personal workspace, click on 'Save a Permanent Copy' button in the top panel. 
+
+![RStudioCloud](https://github.com/sumeetpalsingh/R_course/blob/master/images/RStudioCloud.png)
