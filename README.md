@@ -20,10 +20,6 @@
 ***
 ### Upcoming sessions
 
-#### Session 6: Introduction to R Markdown
-#### Monday, 20 April, 2020. 5 PM Brussels Time (GMT +2) (**See time for your zone below**).
-YouTube link (can access from the playlist link mentioned above, or): https://www.youtube.com/watch?v=zRH0fILJ-k0
-***
 #### Session 7: Interactive Websites using Shiny Apps
 #### Thursday, 23 April, 2020. 5 PM Brussels Time (GMT +2) (**See time for your zone below**).
 YouTube link (can access from the playlist link mentioned above, or): https://www.youtube.com/watch?v=vlgOoW9_jeQ
