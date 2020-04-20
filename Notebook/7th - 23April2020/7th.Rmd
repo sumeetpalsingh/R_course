@@ -1,0 +1,36 @@
+---
+title: "R coursework with Sumeet"
+subtitle: "6th - Interactive Websites using R Shiny"
+author: "Yura Song"
+date: '`r format(Sys.Date(), "%B %d, %Y")`'
+output:
+  html_notebook:
+    toc: yes
+---
+
+In the seventh and last session, we will learn how to use [R Shiny](https://shiny.rstudio.com/) to make interactive websites.
+
+```{r setup, include=FALSE, cache=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = ".")
+```
+
+# Preparation
+
+```{r libraries, message=FALSE}
+## From Session 3
+library(dplyr)
+## From Session4
+library(readxl)
+library(tibble)
+library(tidyr)
+## From Session 5
+library(ggplot2)
+library(ggpubr)
+library(coronavirus)
+## From Session 6
+library(shiny)
+library(shinydashboard)
+```
+
+

@@ -1,0 +1,45 @@
+---
+title: "R coursework with Sumeet"
+subtitle: "6th - Introduction to R Markdown"
+author: "Yura Song"
+date: '`r format(Sys.Date(), "%B %d, %Y")`'
+output:
+  html_notebook:
+    toc: yes
+---
+
+```{r setup, include=FALSE, cache=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = ".")
+```
+
+In the sixth session, we will learn how to use [R Markdown](https://rmarkdown.rstudio.com/) for generating shareable documents containing R code, and using [R Shiny](https://shiny.rstudio.com/) to make interactive websites.
+
+# Preparation
+
+```{r libraries, message=FALSE}
+## From Session 3
+library(dplyr)
+## From Session4
+library(readxl)
+library(tibble)
+library(tidyr)
+## From Session 5
+library(ggplot2)
+library(ggpubr)
+library(coronavirus)
+```
+
+## Install R Shiny
+
+```{r, message=FALSE}
+install.packages(c("shiny","shinydashboard"))
+```
+
+## Test R Shiny installation worked
+```{r}
+library(shiny)
+library(shinydashboard)
+## Should run without any error. 
+```
+
