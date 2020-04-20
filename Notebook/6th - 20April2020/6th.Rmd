@@ -13,6 +13,8 @@ knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_knit$set(root.dir = ".")
 ```
 
+**COMMENT : for this session, I highly recommend to watch the youtube streaming since the markdown is not so easy to put one by one on this note. When I apply the formatting on the text, it automatically changes the format.**
+
 In the sixth session, we will learn how to use [R Markdown](https://rmarkdown.rstudio.com/) for generating shareable documents containing R code, and using [R Shiny](https://shiny.rstudio.com/) to make interactive websites.
 
 # Preparation
@@ -37,9 +39,34 @@ install.packages(c("shiny","shinydashboard"))
 ```
 
 ## Test R Shiny installation worked
+
 ```{r}
 library(shiny)
 library(shinydashboard)
 ## Should run without any error. 
 ```
 
+# R Markdown
+
+With R Markdown, you could share what you have done as **html** format. Actually, this note is a kind of **markdown**. With R Markdown, you could put the comment with code to share, and even the result of analysis!
+
+## Formatting of Documents
+
+For example, the simple text file does not have any formatting. Therefore, we do not need to use spcific software to open. In the other hands, on microsoft word, we could give the formatting like boldic, italic or highlighted. If we try to open the formatted file on text editor, it will not be human-readable.
+
+The goal of markdown is allowing formatting on the plain text, but still human readable. In other words, from the input text, formatting information and final product are all **readable**. 
+
+Markdown, the word comes from the **marking down** on the book. It means that the information of formatting over text. 
+
+## Composition of R markdown
+
+R markdown could be saved as **rmd** format. This could be opened on text editor, but recommend to open on R to run the R codes. Usually the colour of text is changed if the formatting is applied.
+
+### Comments
+
+For making comments, we could use **hashtag (#)**. To put the header, you should give the space between hashtag and text.
+
+```{r}
+## HERE YOU COULD PUT THE HEADER
+library(DESeq2)
+```

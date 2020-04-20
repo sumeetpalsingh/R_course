@@ -234,12 +234,19 @@ summary {
 <li><a href="#install-r-shiny">Install R Shiny</a></li>
 <li><a href="#test-r-shiny-installation-worked">Test R Shiny installation worked</a></li>
 </ul></li>
+<li><a href="#r-markdown">R Markdown</a><ul>
+<li><a href="#formatting-of-documents">Formatting of Documents</a></li>
+<li><a href="#composition-of-r-markdown">Composition of R markdown</a><ul>
+<li><a href="#comments">Comments</a></li>
+</ul></li>
+</ul></li>
 </ul>
 </div>
 
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-text-begin -->
+<p><strong>COMMENT : for this session, I highly recommend to watch the youtube streaming since the markdown is not so easy to put one by one on this note. When I apply the formatting on the text, it automatically changes the format.</strong></p>
 <p>In the sixth session, we will learn how to use <a href="https://rmarkdown.rstudio.com/">R Markdown</a> for generating shareable documents containing R code, and using <a href="https://shiny.rstudio.com/">R Shiny</a> to make interactive websites.</p>
 <div id="preparation" class="section level1">
 <h1>Preparation</h1>
@@ -280,11 +287,35 @@ library(shinydashboard)
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+</div>
+</div>
+<div id="r-markdown" class="section level1">
+<h1>R Markdown</h1>
+<p>With R Markdown, you could share what you have done as <strong>html</strong> format. Actually, this note is a kind of <strong>markdown</strong>. With R Markdown, you could put the comment with code to share, and even the result of analysis!</p>
+<div id="formatting-of-documents" class="section level2">
+<h2>Formatting of Documents</h2>
+<p>For example, the simple text file does not have any formatting. Therefore, we do not need to use spcific software to open. In the other hands, on microsoft word, we could give the formatting like boldic, italic or highlighted. If we try to open the formatted file on text editor, it will not be human-readable.</p>
+<p>The goal of markdown is allowing formatting on the plain text, but still human readable. In other words, from the input text, formatting information and final product are all <strong>readable</strong>.</p>
+<p>Markdown, the word comes from the <strong>marking down</strong> on the book. It means that the information of formatting over text.</p>
+</div>
+<div id="composition-of-r-markdown" class="section level2">
+<h2>Composition of R markdown</h2>
+<p>R markdown could be saved as <strong>rmd</strong> format. This could be opened on text editor, but recommend to open on R to run the R codes. Usually the colour of text is changed if the formatting is applied.</p>
+<div id="comments" class="section level3">
+<h3>Comments</h3>
+<p>For making comments, we could use <strong>hashtag (#)</strong>. To put the header, you should give the space between hashtag and text.</p>
 <!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyMgSEVSRSBZT1UgQ09VTEQgUFVUIFRIRSBIRUFERVJcbmxpYnJhcnkoREVTZXEyKVxuYGBgIn0= -->
+<pre class="r"><code>## HERE YOU COULD PUT THE HEADER
+library(DESeq2)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+</div>
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBjb3Vyc2V3b3JrIHdpdGggU3VtZWV0IgpzdWJ0aXRsZTogIjZ0aCAtIEludHJvZHVjdGlvbiB0byBSIE1hcmtkb3duIgphdXRob3I6ICJZdXJhIFNvbmciCmRhdGU6ICdgciBmb3JtYXQoU3lzLkRhdGUoKSwgIiVCICVkLCAlWSIpYCcKb3V0cHV0OgogIGh0bWxfbm90ZWJvb2s6CiAgICB0b2M6IHllcwotLS0KCmBgYHtyIHNldHVwLCBpbmNsdWRlPUZBTFNFLCBjYWNoZT1GQUxTRX0Ka25pdHI6Om9wdHNfY2h1bmskc2V0KGVjaG8gPSBUUlVFKQprbml0cjo6b3B0c19rbml0JHNldChyb290LmRpciA9ICIuIikKYGBgCgpJbiB0aGUgc2l4dGggc2Vzc2lvbiwgd2Ugd2lsbCBsZWFybiBob3cgdG8gdXNlIFtSIE1hcmtkb3duXShodHRwczovL3JtYXJrZG93bi5yc3R1ZGlvLmNvbS8pIGZvciBnZW5lcmF0aW5nIHNoYXJlYWJsZSBkb2N1bWVudHMgY29udGFpbmluZyBSIGNvZGUsIGFuZCB1c2luZyBbUiBTaGlueV0oaHR0cHM6Ly9zaGlueS5yc3R1ZGlvLmNvbS8pIHRvIG1ha2UgaW50ZXJhY3RpdmUgd2Vic2l0ZXMuCgojIFByZXBhcmF0aW9uCgpgYGB7ciBsaWJyYXJpZXMsIG1lc3NhZ2U9RkFMU0V9CiMjIEZyb20gU2Vzc2lvbiAzCmxpYnJhcnkoZHBseXIpCiMjIEZyb20gU2Vzc2lvbjQKbGlicmFyeShyZWFkeGwpCmxpYnJhcnkodGliYmxlKQpsaWJyYXJ5KHRpZHlyKQojIyBGcm9tIFNlc3Npb24gNQpsaWJyYXJ5KGdncGxvdDIpCmxpYnJhcnkoZ2dwdWJyKQpsaWJyYXJ5KGNvcm9uYXZpcnVzKQpgYGAKCiMjIEluc3RhbGwgUiBTaGlueQoKYGBge3IsIG1lc3NhZ2U9RkFMU0V9Cmluc3RhbGwucGFja2FnZXMoYygic2hpbnkiLCJzaGlueWRhc2hib2FyZCIpKQpgYGAKCiMjIFRlc3QgUiBTaGlueSBpbnN0YWxsYXRpb24gd29ya2VkCmBgYHtyfQpsaWJyYXJ5KHNoaW55KQpsaWJyYXJ5KHNoaW55ZGFzaGJvYXJkKQojIyBTaG91bGQgcnVuIHdpdGhvdXQgYW55IGVycm9yLiAKYGBgCgo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBjb3Vyc2V3b3JrIHdpdGggU3VtZWV0IgpzdWJ0aXRsZTogIjZ0aCAtIEludHJvZHVjdGlvbiB0byBSIE1hcmtkb3duIgphdXRob3I6ICJZdXJhIFNvbmciCmRhdGU6ICdgciBmb3JtYXQoU3lzLkRhdGUoKSwgIiVCICVkLCAlWSIpYCcKb3V0cHV0OgogIGh0bWxfbm90ZWJvb2s6CiAgICB0b2M6IHllcwotLS0KCmBgYHtyIHNldHVwLCBpbmNsdWRlPUZBTFNFLCBjYWNoZT1GQUxTRX0Ka25pdHI6Om9wdHNfY2h1bmskc2V0KGVjaG8gPSBUUlVFKQprbml0cjo6b3B0c19rbml0JHNldChyb290LmRpciA9ICIuIikKYGBgCgoqKkNPTU1FTlQgOiBmb3IgdGhpcyBzZXNzaW9uLCBJIGhpZ2hseSByZWNvbW1lbmQgdG8gd2F0Y2ggdGhlIHlvdXR1YmUgc3RyZWFtaW5nIHNpbmNlIHRoZSBtYXJrZG93biBpcyBub3Qgc28gZWFzeSB0byBwdXQgb25lIGJ5IG9uZSBvbiB0aGlzIG5vdGUuIFdoZW4gSSBhcHBseSB0aGUgZm9ybWF0dGluZyBvbiB0aGUgdGV4dCwgaXQgYXV0b21hdGljYWxseSBjaGFuZ2VzIHRoZSBmb3JtYXQuKioKCkluIHRoZSBzaXh0aCBzZXNzaW9uLCB3ZSB3aWxsIGxlYXJuIGhvdyB0byB1c2UgW1IgTWFya2Rvd25dKGh0dHBzOi8vcm1hcmtkb3duLnJzdHVkaW8uY29tLykgZm9yIGdlbmVyYXRpbmcgc2hhcmVhYmxlIGRvY3VtZW50cyBjb250YWluaW5nIFIgY29kZSwgYW5kIHVzaW5nIFtSIFNoaW55XShodHRwczovL3NoaW55LnJzdHVkaW8uY29tLykgdG8gbWFrZSBpbnRlcmFjdGl2ZSB3ZWJzaXRlcy4KCiMgUHJlcGFyYXRpb24KCmBgYHtyIGxpYnJhcmllcywgbWVzc2FnZT1GQUxTRX0KIyMgRnJvbSBTZXNzaW9uIDMKbGlicmFyeShkcGx5cikKIyMgRnJvbSBTZXNzaW9uNApsaWJyYXJ5KHJlYWR4bCkKbGlicmFyeSh0aWJibGUpCmxpYnJhcnkodGlkeXIpCiMjIEZyb20gU2Vzc2lvbiA1CmxpYnJhcnkoZ2dwbG90MikKbGlicmFyeShnZ3B1YnIpCmxpYnJhcnkoY29yb25hdmlydXMpCmBgYAoKIyMgSW5zdGFsbCBSIFNoaW55CgpgYGB7ciwgbWVzc2FnZT1GQUxTRX0KaW5zdGFsbC5wYWNrYWdlcyhjKCJzaGlueSIsInNoaW55ZGFzaGJvYXJkIikpCmBgYAoKIyMgVGVzdCBSIFNoaW55IGluc3RhbGxhdGlvbiB3b3JrZWQKCmBgYHtyfQpsaWJyYXJ5KHNoaW55KQpsaWJyYXJ5KHNoaW55ZGFzaGJvYXJkKQojIyBTaG91bGQgcnVuIHdpdGhvdXQgYW55IGVycm9yLiAKYGBgCgojIFIgTWFya2Rvd24KCldpdGggUiBNYXJrZG93biwgeW91IGNvdWxkIHNoYXJlIHdoYXQgeW91IGhhdmUgZG9uZSBhcyAqKmh0bWwqKiBmb3JtYXQuIEFjdHVhbGx5LCB0aGlzIG5vdGUgaXMgYSBraW5kIG9mICoqbWFya2Rvd24qKi4gV2l0aCBSIE1hcmtkb3duLCB5b3UgY291bGQgcHV0IHRoZSBjb21tZW50IHdpdGggY29kZSB0byBzaGFyZSwgYW5kIGV2ZW4gdGhlIHJlc3VsdCBvZiBhbmFseXNpcyEKCiMjIEZvcm1hdHRpbmcgb2YgRG9jdW1lbnRzCgpGb3IgZXhhbXBsZSwgdGhlIHNpbXBsZSB0ZXh0IGZpbGUgZG9lcyBub3QgaGF2ZSBhbnkgZm9ybWF0dGluZy4gVGhlcmVmb3JlLCB3ZSBkbyBub3QgbmVlZCB0byB1c2Ugc3BjaWZpYyBzb2Z0d2FyZSB0byBvcGVuLiBJbiB0aGUgb3RoZXIgaGFuZHMsIG9uIG1pY3Jvc29mdCB3b3JkLCB3ZSBjb3VsZCBnaXZlIHRoZSBmb3JtYXR0aW5nIGxpa2UgYm9sZGljLCBpdGFsaWMgb3IgaGlnaGxpZ2h0ZWQuIElmIHdlIHRyeSB0byBvcGVuIHRoZSBmb3JtYXR0ZWQgZmlsZSBvbiB0ZXh0IGVkaXRvciwgaXQgd2lsbCBub3QgYmUgaHVtYW4tcmVhZGFibGUuCgpUaGUgZ29hbCBvZiBtYXJrZG93biBpcyBhbGxvd2luZyBmb3JtYXR0aW5nIG9uIHRoZSBwbGFpbiB0ZXh0LCBidXQgc3RpbGwgaHVtYW4gcmVhZGFibGUuIEluIG90aGVyIHdvcmRzLCBmcm9tIHRoZSBpbnB1dCB0ZXh0LCBmb3JtYXR0aW5nIGluZm9ybWF0aW9uIGFuZCBmaW5hbCBwcm9kdWN0IGFyZSBhbGwgKipyZWFkYWJsZSoqLiAKCk1hcmtkb3duLCB0aGUgd29yZCBjb21lcyBmcm9tIHRoZSAqKm1hcmtpbmcgZG93bioqIG9uIHRoZSBib29rLiBJdCBtZWFucyB0aGF0IHRoZSBpbmZvcm1hdGlvbiBvZiBmb3JtYXR0aW5nIG92ZXIgdGV4dC4gCgojIyBDb21wb3NpdGlvbiBvZiBSIG1hcmtkb3duCgpSIG1hcmtkb3duIGNvdWxkIGJlIHNhdmVkIGFzICoqcm1kKiogZm9ybWF0LiBUaGlzIGNvdWxkIGJlIG9wZW5lZCBvbiB0ZXh0IGVkaXRvciwgYnV0IHJlY29tbWVuZCB0byBvcGVuIG9uIFIgdG8gcnVuIHRoZSBSIGNvZGVzLiBVc3VhbGx5IHRoZSBjb2xvdXIgb2YgdGV4dCBpcyBjaGFuZ2VkIGlmIHRoZSBmb3JtYXR0aW5nIGlzIGFwcGxpZWQuCgojIyMgQ29tbWVudHMKCkZvciBtYWtpbmcgY29tbWVudHMsIHdlIGNvdWxkIHVzZSAqKmhhc2h0YWcgKCMpKiouIFRvIHB1dCB0aGUgaGVhZGVyLCB5b3Ugc2hvdWxkIGdpdmUgdGhlIHNwYWNlIGJldHdlZW4gaGFzaHRhZyBhbmQgdGV4dC4KCmBgYHtyfQojIyBIRVJFIFlPVSBDT1VMRCBQVVQgVEhFIEhFQURFUgpsaWJyYXJ5KERFU2VxMikKYGBg</div>
 
 
 
