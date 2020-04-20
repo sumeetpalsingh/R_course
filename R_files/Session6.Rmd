@@ -1,0 +1,156 @@
+---
+title: "Session6"
+author: "Sumeet Pal Singh"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float:
+      toc_collapse: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+***
+***
+Introduction to R Markdown
+==========================
+
+My first Markdown
+-------------
+
+### In R Language
+
+#### Using RStudio
+
+Today we will generate R Markdown text.  
+
+This is useful for sharing R code.  
+
+Plain-text can be *formatted* and remains **human readable**.
+
+[Link to R Markdown Website](https://rmarkdown.rstudio.com/)
+
+Tables can be made
+
+Col1 | Col2 | Col3
+---|---|---
+1|2|3
+54|34|5454
+
+And lists
+
+- Item 
+- Another Item
+  + Sub-item
+  + Another Sub-item
+    + Third layer
+
+Or ordered
+
+1. Item 1
+2. Item 2
+
+Let us start with R!
+
+Include libraries for additional features
+
+```{r libraries, message = FALSE, warning = FALSE}
+## From Session 3
+library(dplyr)
+## From Session4
+library(readxl)
+library(tibble)
+library(tidyr)
+## From Session 5
+library(ggplot2)
+library(ggpubr)
+library(coronavirus)
+```
+
+Let us look at the coronavirus dataset
+
+```{r glimpse}
+glimpse(coronavirus)
+
+head(coronavirus)
+```
+
+Countries present in the dataset
+Insert R code (Cmd + Option + I)
+```{r countries}
+table(coronavirus$Country.Region)
+```
+
+
+
+## Get Belgium Data
+
+We will filter the data using dplyr for which Country.Region is Belgium
+```{r}
+coronavirus %>% 
+  filter(Country.Region == "Belgium") -> 
+  Belgium.covid
+tail(Belgium.covid)
+```
+
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r plot}
+p.Belgium <- ggplot(data = Belgium.covid, 
+                    mapping = aes(x = date, y = cases))
+p.Belgium + geom_line(mapping = aes(color = type))
+
+```
+
+### Make smooth line graph
+
+```{r}
+## You don't need to initiate ggplot object again
+p.Belgium 
+
+p.Belgium + geom_smooth(mapping = aes(color = type, fill = type))
+
+## Filling color manually
+
+p.Belgium + 
+  geom_smooth(mapping = aes(color = type, fill = type)) +
+  scale_color_manual(values = c("blue", "cyan", "orange1")) +
+  scale_fill_manual(values = c("blue", "cyan", "orange1"))
+```
+
+## Plot the ratio of dead to recovered
+
+We will try to see the trend of death to recovery
+```{r}
+## Add a new column
+Belgium.covid %>% 
+  spread(key = type, value = cases) %>%
+  group_by(date) %>%
+  mutate(Dead_Recover = (death + 0.1) / (recovered + 0.1)) ->
+  Belgium.covid
+  
+p.Belgium <- ggplot(data = Belgium.covid, 
+                    mapping = aes(x = date, y = Dead_Recover))
+
+p.Belgium + geom_smooth()
+  
+```
+
+
+## Plot the same for UK and France
+
+
+
+```{r}
+sessionInfo()
+```
+
+
+
