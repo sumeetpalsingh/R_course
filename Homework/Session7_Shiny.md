@@ -13,7 +13,7 @@ For the exercise, please go through the tutorial developed by R Shiny. The tutor
 
 Share your app online on cloud using the free service here: <https://www.shinyapps.io/>
 
-Ask your friends and family to test your app :D
+Ask your friends and family to test your app :smiley:
 
 Good luck!
 
