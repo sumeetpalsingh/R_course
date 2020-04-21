@@ -3,7 +3,7 @@ Homework, Session 7: R Shiny
 
 ### Exercise 1: Revise R Shiny using online tutorial
 
-For the exercise, please go through the tutorial developed by R Shiny. The tutorial contains a [video](https://shiny.rstudio.com/tutorial/#video-tutorials) and written tutorial (https://shiny.rstudio.com/tutorial/#written-tutorials).
+For the exercise, please go through the tutorial developed by R Shiny. The tutorial contains a [video](https://shiny.rstudio.com/tutorial/#video-tutorials) and [written](https://shiny.rstudio.com/tutorial/#written-tutorials)  tutorial.
 
 [Learn Shiny](https://shiny.rstudio.com/tutorial/#written-tutorials)
 
