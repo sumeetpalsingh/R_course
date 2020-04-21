@@ -12,3 +12,5 @@ Slides from the presentation (Click on Link Below to View)
 [**Session 5: Introduction to ggplot**](http://htmlpreview.github.io/?https://github.com/sumeetpalsingh/R_course/blob/master/Presentations/Session5_Presentation.html)
 
 [**Session 6: Introduction to R Markdown**](http://htmlpreview.github.io/?https://github.com/sumeetpalsingh/R_course/blob/master/Presentations/Session6_Presentation.html)
+
+[**Session 7: Introduction to R Shiny**](http://htmlpreview.github.io/?https://github.com/sumeetpalsingh/R_course/blob/master/Presentations/Session7_Presentation.html)
