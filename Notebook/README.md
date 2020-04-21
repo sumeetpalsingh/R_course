@@ -16,4 +16,4 @@ Click on the link below to view the html files
 
 [**Session 6: Introduction to R Markdown**](https://htmlpreview.github.io/?https://github.com/sumeetpalsingh/R_course/blob/master/Notebook/6th%20-%2020April2020/6th.nb.html)
 
-[**Session 7: Introduction to R Shiny**](https://htmlpreview.github.io/?https://github.com/sumeetpalsingh/R_course/blob/master/Notebook/7th%23-%2020April2020/7th.nb.html)
+[**Session 7: Introduction to R Shiny**](https://htmlpreview.github.io/?https://github.com/sumeetpalsingh/R_course/blob/master/Notebook/7th%20-%2023April2020/7th.nb.html)
