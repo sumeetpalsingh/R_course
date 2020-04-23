@@ -33,4 +33,83 @@ library(shiny)
 library(shinydashboard)
 ```
 
+- Download [R Shiny Cheat Sheet](https://github.com/sumeetpalsingh/R_course/blob/master/CheatSheet/shiny.pdf) 
 
+# R shiny
+
+**R shiny** is the tool for sharing data with interactive websites! It would be helpful to present and share your data with your collaborators.
+
+Actually you could work with the basic and default shiny app. You could run it by using **Run app** button. Also, before closing, you should stop the app with **stop** button.
+
+## Component of R Shiny
+
+R Shiny is composed of title, sidebar and main panel. Here, it does not have that much of flexibility so you should encode as a shiny feature. This is the minimum component of user interface. For instance,
+```{r}
+ui <- fluidPage(
+  titlePanel("title"),
+  
+  sidebarLayout(
+    sidebarPanel("sidebar"), ## User input
+    mainPanel("main")
+  )
+)
+```
+
+## Input ID
+
+We need to specify the input ID for specifying which one is input. This would be a link between input and output. It is called **inputId** and **outputId**.
+```{r}
+    # Sidebar with a slider input for number of bins 
+    sidebarLayout(
+        sidebarPanel(
+            sliderInput(inputId = "bins",
+                        "Number of bins:",
+                        min = 1,
+                        max = 50,
+                        value = 30)
+        ),
+
+        # Show a plot of the generated distribution
+        mainPanel(
+           plotOutput(outputId = "distPlot")
+        )
+    )
+```
+
+## Server
+
+It is always using pre-defined UI. Here, it will assign the output with the outputID on main panel. The ID is character vector and we need quotation mark for specification.
+```{r}
+# Define server logic required to draw a histogram
+server <- function(input, output) {
+
+    output$distPlot <- renderPlot({
+        # generate bins based on input$bins from ui.R
+        x    <- faithful[, 2] ## Taking second column : waiting time
+        bins <- seq(min(x), max(x), length.out = input$bins + 1)
+
+        # draw the histogram with the specified number of bins : Always last line is the output!!!
+        hist(x, breaks = bins, col = 'darkgray', border = 'white')
+    })
+}
+```
+
+# Input and output
+
+## Basic types of input
+
+There are several different type of input and you could clarify the format of input with specific function.
+
+- Checkbox, radio buttons
+- Text, date input
+- Numeric input, password input
+
+## Output
+
+### UI
+
+We should clarify the format of output, such as plot, raw HTML, text or table.
+
+### Server
+
+Within the server, we should connect between input and output. *render()* creates the type of output we wish to make.
